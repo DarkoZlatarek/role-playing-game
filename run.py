@@ -22,8 +22,39 @@ dict_of_characters[warrior.rase] = warrior
 dict_of_characters[mage.rase] = mage
 
 
-character_choice = input("Choose charactert. warrior or mage?\n")
-if character_choice in dict_of_characters:
-    print("Your character is:\n" ,dict_of_characters[character_choice])
-else:
-    print(f"Sorry I could not find {character_choice} in records")
+def character_choice():
+    """
+    Get users choice of the character.
+    Run a while loop to collect a valid input from the user
+    via the terminal, which must be either warrior or mage.
+    The loop will repeatedly request the input until it is valid.
+    """
+
+    while True:
+        user_input = input("Choose character. Warrior or mage?\n")
+        user_choice = user_input.lower()
+
+        if validate_input(user_choice):
+            print("Your have chosen:\n" ,dict_of_characters[user_choice])
+            break
+
+    return user_choice
+
+
+def validate_input(choice):
+    """
+    Inside the try, raises ValueError if input from the user
+    is not one of the character they can chose from.
+    """
+    try:
+        if choice not in dict_of_characters:
+            raise ValueError("Sorry, don't know who that is.")
+    except ValueError as e:
+        print(f"{e}, chose between warrior and mage!\n")
+        return False
+    
+    return True
+
+
+character = character_choice()
+
