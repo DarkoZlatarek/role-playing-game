@@ -28,7 +28,7 @@ MSG = 'Many years ago, warriors, mages and dark elves '\
     'themselves, but their resources were running low so they '\
     'started raiding villages of warriors and mages. '\
     'Stealing their food, women and man for slaves. '\
-    'One day, they have crossed the line.....'
+    'One day, they have crossed the line.....\n \n'
 
 
 dict_of_characters = {}
@@ -100,17 +100,16 @@ def message(string):
     for i in string:
        
         # printing each character of the message
-        print(i, end='')
+        print(i, end='', flush=True)
          
         # adding time delay of half second
-        time.sleep(0.5)
+        time.sleep(0.05)
 
-
-message(MSG)
 
 
 def main():
     start_game()
+    message(MSG)
     character_choice()
 
 
