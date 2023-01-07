@@ -31,6 +31,9 @@ INTRO_STORY = 'Many years ago, warriors, mages and dark elves '\
     'One day, they have crossed the line.....\n \n'
 
 
+START_STORY = f'You are sitting in the The Rusty Cog Inn, drinking your usual drink, rakia. It is a homemade spirit made by the Inn\'s owner Balrus. You are chatting with Balrus over the bar when all of a sudden a man came rushing in yelling: "{character_choice()} {chose_name()}!! The king needs you! You need to go quick, his daughter was taken by the evil dark elf Dralahi and you are the only person who dares to go against him. Go! Go! Go! Time is of essence!"'
+
+
 dict_of_characters = {}
 warrior = Character('warrior', 200, 15, 20)
 mage = Character('mage', 130, 30, 10)
@@ -139,6 +142,7 @@ def main():
     message(INTRO_STORY)
     character_choice()
     chose_name()
+    message(START_STORY)
 
 
 print('Welcome to fantasy role playing game!\n')
