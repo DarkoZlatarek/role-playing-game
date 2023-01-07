@@ -19,7 +19,7 @@ class Character:
         return f'rase: {self.rase} \n health: {self.health} \n strength: {self.strength} \n defense: {self.defense}'
 
 
-MSG = 'Many years ago, warriors, mages and dark elves '\
+INTRO_STORY = 'Many years ago, warriors, mages and dark elves '\
     'lived in unity. They shared knowledge of their ancestors '\
     'and the way of life between each other. Until one-day '\
     'dark elves decided that warriors and mages are beneath '\
@@ -41,7 +41,7 @@ dict_of_characters[mage.rase] = mage
 
 def start_game():
     '''
-    User will chose if he want's to start the game or quit
+    User will choose if he want's to start the game or quit
     before even trying.
     '''
 
@@ -50,12 +50,22 @@ def start_game():
 
     if start == 'start':
         return
-    elif start == 'exit':
+    if start == 'exit':
         print('You could have at least try. Good bye!')
         sys.exit()
     elif start != 'start' or 'exit':
         print('Don\'t understand.')
         start_game()
+
+
+def message(string):
+    '''
+    Prints the string to the terminal letter by letter with
+    time delay.
+    '''
+    for i in string:
+        print(i, end='', flush=True)
+        time.sleep(0.05)
 
 
 def character_choice():
@@ -88,32 +98,48 @@ def validate_input(choice):
     try:
         if choice not in dict_of_characters:
             raise ValueError('Sorry, don\'t know who that is.')
-    except ValueError as e:
-        print(f'{e}, chose between warrior or mage!\n')
+    except ValueError as v_e:
+        print(f'{v_e}, chose between warrior or mage!\n')
         return False
-    
+
     return True
 
 
-def message(string):
-   
-    for i in string:
-       
-        # printing each character of the message
-        print(i, end='', flush=True)
-         
-        # adding time delay of half second
-        time.sleep(0.05)
+def chose_name():
+    '''
+    Collects the user's name input.
+    '''
+    user_name = input('\nType your name:\n')
 
+    def input_name_check():
+        '''
+        User confirming that the name they typed is the one they want
+        '''
+        name_check = input(f'Is {user_name} name you want? Y/N\n')
+        name_confirmation = name_check.lower()
+        return name_confirmation
+
+    name_confirmed = input_name_check()
+
+    if name_confirmed == 'y':
+        print(f'Hello {user_name}. Welcome!')
+        return user_name
+    if name_confirmed == 'n':
+        chose_name()
+    elif name_confirmed != 'y' or 'n':
+        print('Sorry, was that "y" or "n"?\n')
+        input_name_check()
 
 
 def main():
+    """
+    Run all program functions
+    """
     start_game()
-    message(MSG)
+    message(INTRO_STORY)
     character_choice()
+    chose_name()
 
 
-print('Welcome to role playing game!\n')
+print('Welcome to fantasy role playing game!\n')
 main()
-
-
