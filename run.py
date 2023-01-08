@@ -16,7 +16,8 @@ class Character:
         self.defense = defense
 
     def __str__(self):
-        return f'rase: {self.rase} \n health: {self.health} \n strength: {self.strength} \n defense: {self.defense}'
+        return f'rase: {self.rase} \n health: {self.health} \n '\
+            'strength: {self.strength} \n defense: {self.defense}'
 
 
 INTRO_STORY = 'Many years ago, warriors, mages and dark elves '\
@@ -28,7 +29,20 @@ INTRO_STORY = 'Many years ago, warriors, mages and dark elves '\
     'themselves, but their resources were running low so they '\
     'started raiding villages of warriors and mages. '\
     'Stealing their food, women and man for slaves. '\
-    'One day, they have crossed the line.....\n \n'
+    'One day, they have crossed the line.....\n\n'
+
+COWARD = '“I am sorry, but I can not help you”. You go back to '\
+    'The Rusty Cog Inn, sit by the bar and order another rakia. '\
+    'All eyes were on you and you know exactly what everyone was '\
+    'thinking. You stand up and shout: “I can not save here!! Now '\
+    'leave me to drink in peace!!” You sit back down, finish your '\
+    'glass and order another rakia.\n\n'
+
+F_FOREST = '“Where did he took her?” you ask.\n'\
+    '”Into the forbidden forest. Please you have to help me. '\
+    'Only you can save my dear Astrid.” says the king begging\n'\
+    '”Alright. I will save the princes” you say and '\
+    'head towards The Forbidden forest.'
 
 dict_of_characters = {}
 warrior = Character('warrior', 200, 15, 20)
@@ -137,16 +151,41 @@ def start_story(char, name):
     '''
 
     story = f'You are sitting in the The Rusty Cog Inn, drinking your'\
-        f' usual drink, rakia. It is a homemade spirit made by the Inn\'s '\
-        f'owner Balrus. You are chatting with Balrus over the bar when all '\
-        f'of a sudden a man came rushing in yelling: "The {char} {name}!! The '\
-        f'king needs you! You need to go quick, his daughter was taken by '\
-        f'the evil dark elf Dralahi and you are the only person who dares '\
-        f'to go against him. Go! Go! Go! Time is of essence!"'
+        ' usual drink, rakia. It is a homemade spirit made by the Inn\'s '\
+        'owner Balrus. You are chatting with Balrus over the bar when all '\
+        f'of a sudden a man came rushing in yelling: "Hey, {char} {name}!! '\
+        'The king needs you! You need to go quick, his daughter was taken '\
+        'by the evil dark elf Dralahi and you are the only person who '\
+        'dares to go against him. Go! Go! Go! Time is of essence!"'\
+        '.\n.\n.\n.\n.\n.\n You quickly finish your rakia and start running '\
+        'to see the king. As you are approaching the king, he starts '\
+        f'running towards you and starts begging: “Please {name}, you '\
+        'need to save my Astrid. I beg of you.”\n'\
+        'Deep down you know you still love Astrid.\n'
 
-    for s in story:
-        print(s, end='', flush=True)
+    for i in story:
+        print(i, end='', flush=True)
         time.sleep(0.05)
+
+
+def next_move(char, name):
+    '''
+    User chooses if he wants to go after the princes or not.
+    '''
+    
+    save_princes = input('What will you do? A/B\nA) Save the princes\nB) Go back to The Rusty Cog Inn\n')
+    choice = save_princes.lower()
+
+    if choice == 'a':
+        message(F_FOREST)
+        return
+    if choice == 'b':
+        message(COWARD)
+        print(f'You became known as {char} {name} the coward.')
+        sys.exit()
+    elif choice != 'a' or 'b':
+        print('Sorry, didn\'t understand that.')
+        next_move(char, name)
 
 
 def main():
@@ -158,6 +197,7 @@ def main():
     character = character_choice()
     name = chose_name()
     start_story(character, name)
+    next_move(character, name)
 
 
 print('Welcome to fantasy role playing game!\n')
