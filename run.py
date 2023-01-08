@@ -30,10 +30,6 @@ INTRO_STORY = 'Many years ago, warriors, mages and dark elves '\
     'Stealing their food, women and man for slaves. '\
     'One day, they have crossed the line.....\n \n'
 
-
-START_STORY = f'You are sitting in the The Rusty Cog Inn, drinking your usual drink, rakia. It is a homemade spirit made by the Inn\'s owner Balrus. You are chatting with Balrus over the bar when all of a sudden a man came rushing in yelling: "{character_choice()} {chose_name()}!! The king needs you! You need to go quick, his daughter was taken by the evil dark elf Dralahi and you are the only person who dares to go against him. Go! Go! Go! Time is of essence!"'
-
-
 dict_of_characters = {}
 warrior = Character('warrior', 200, 15, 20)
 mage = Character('mage', 130, 30, 10)
@@ -116,9 +112,9 @@ def chose_name():
 
     def input_name_check():
         '''
-        User confirming that the name they typed is the one they want
+        User confirming that the name they typed is the one they want.
         '''
-        name_check = input(f'Is {user_name} name you want? Y/N\n')
+        name_check = input(f'Is {user_name} name you want? y/n\n')
         name_confirmation = name_check.lower()
         return name_confirmation
 
@@ -134,15 +130,34 @@ def chose_name():
         input_name_check()
 
 
+def start_story(char, name):
+    '''
+    Prints the string to the terminal letter by letter with
+    time delay.
+    '''
+
+    story = f'You are sitting in the The Rusty Cog Inn, drinking your'\
+        f' usual drink, rakia. It is a homemade spirit made by the Inn\'s '\
+        f'owner Balrus. You are chatting with Balrus over the bar when all '\
+        f'of a sudden a man came rushing in yelling: "The {char} {name}!! The '\
+        f'king needs you! You need to go quick, his daughter was taken by '\
+        f'the evil dark elf Dralahi and you are the only person who dares '\
+        f'to go against him. Go! Go! Go! Time is of essence!"'
+
+    for s in story:
+        print(s, end='', flush=True)
+        time.sleep(0.05)
+
+
 def main():
     """
     Run all program functions
     """
     start_game()
     message(INTRO_STORY)
-    character_choice()
-    chose_name()
-    message(START_STORY)
+    character = character_choice()
+    name = chose_name()
+    start_story(character, name)
 
 
 print('Welcome to fantasy role playing game!\n')
