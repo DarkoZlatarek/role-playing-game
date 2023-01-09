@@ -16,19 +16,18 @@ class Character:
         self.defense = defense
 
     def __str__(self):
-        return f'rase: {self.rase} \n health: {self.health} \n '\
-            'strength: {self.strength} \n defense: {self.defense}'
+        return f'rase: {self.rase} \n health: {self.health} \n strength: {self.strength} \n defense: {self.defense}'
 
 
 INTRO_STORY = 'Many years ago, warriors, mages and dark elves '\
-    'lived in unity. They shared knowledge of their ancestors '\
-    'and the way of life between each other. Until one-day '\
+    'lived in unity. They shared\nknowledge of their ancestors '\
+    'and the way of life between each other. Until\none day '\
     'dark elves decided that warriors and mages are beneath '\
-    'them. Dark elves migrated away from the warriors and mages '\
-    'into the mountains. For many years, they stick for '\
-    'themselves, but their resources were running low so they '\
+    'them. Dark\nelves migrated away from the warriors and mages '\
+    'into the mountains. For many\nyears, they stick for '\
+    'themselves, but their resources were running low so\nthey '\
     'started raiding villages of warriors and mages. '\
-    'Stealing their food, women and man for slaves. '\
+    'Stealing their food,\nwomen and man for slaves. '\
     'One day, they have crossed the line.....\n\n'
 
 COWARD = '“I am sorry, but I can not help you”. You go back to '\
@@ -38,10 +37,7 @@ COWARD = '“I am sorry, but I can not help you”. You go back to '\
     'leave me to drink in peace!!” You sit back down, finish your '\
     'glass and order another rakia.\n\n'
 
-F_FOREST = '“Where did he took her?” you ask.\n'\
-    '”Into the forbidden forest. Please you have to help me. '\
-    'Only you can save my dear Astrid.” says the king begging\n'\
-    '”Alright. I will save the princes” you say and '\
+F_FOREST = '”Alright. I will save the princes” you say and '\
     'head towards The Forbidden forest.'
 
 dict_of_characters = {}
@@ -160,7 +156,10 @@ def start_story(char, name):
         '.\n.\n.\n.\n.\n.\n You quickly finish your rakia and start running '\
         'to see the king. As you are approaching the king, he starts '\
         f'running towards you and starts begging: “Please {name}, you '\
-        'need to save my Astrid. I beg of you.”\n'\
+        'need to save my Astrid. I beg of you.”\n "Where did he took here" '\
+        'you ask.\n"Into The Forbidden forest. Astrid does\'t like that '\
+        'place." says the king.\n'\
+        '"No one does, my king, apart from dark elves" you say.\n'\
         'Deep down you know you still love Astrid.\n'
 
     for i in story:
