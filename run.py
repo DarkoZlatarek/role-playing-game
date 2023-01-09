@@ -3,6 +3,7 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 import time
 import sys
+from random import randint
 
 
 class Character:
@@ -38,7 +39,21 @@ COWARD = '“I am sorry, but I can not help you”. You go back to '\
     'glass and order another rakia.\n\n'
 
 F_FOREST = '”Alright. I will save the princes” you say and '\
-    'head towards The Forbidden forest.'
+    'head towards The Forbidden forest.\n'
+
+PYTHON = '\nAs you step into The Forbidden forest, you feel the '\
+    'sudden change on your\nskin. Air becomes heavier, colder '\
+    'and you feel like someone is watching you.\nYou can see '\
+    'the footprints on the path and you know these are from the '\
+    'dark\nelves because of the shape of them. Only three toes '\
+    'and double the size of\nyour own. You follow the footprints '\
+    'and all of a sudden, something jumps on\nyou from the bushes. '\
+    'You manage to fight it and toss it away from you onto\nthe '\
+    'footpath. Great big eyes are staring at you with fangs as long '\
+    'and sharp\nas butcher\'s knife. It is a python and you realize '\
+    'you need to fight it and\nthat there will be more danger here '\
+    'then just dark elves.\n'\
+    '\npython\nhealth: 10\nstrength: 5\ndefense: 2\n'
 
 dict_of_characters = {}
 warrior = Character('warrior', 200, 15, 20)
@@ -131,7 +146,6 @@ def chose_name():
     name_confirmed = input_name_check()
 
     if name_confirmed == 'y':
-        print(f'Hello {user_name}. Welcome!')
         return user_name
     if name_confirmed == 'n':
         chose_name()
@@ -155,8 +169,8 @@ def start_story(char, name):
         'dares to go against him. Go! Go! Go! Time is of essence!"'\
         '.\n.\n.\n.\n.\n.\n You quickly finish your rakia and start running '\
         'to see the king. As you are approaching the king, he starts '\
-        f'running towards you and starts begging: “Please {name}, you '\
-        'need to save my Astrid. I beg of you.”\n "Where did he took here" '\
+        f'running towards you and starts begging: "Please {name}, you '\
+        'need to save my Astrid. I beg of you."\n "Where did he took here" '\
         'you ask.\n"Into The Forbidden forest. Astrid does\'t like that '\
         'place." says the king.\n'\
         '"No one does, my king, apart from dark elves" you say.\n'\
@@ -187,17 +201,57 @@ def next_move(char, name):
         next_move(char, name)
 
 
+def dice_roll_input():
+    '''
+    Askes the user to type "roll" to run the function that
+    simulates rolling the dice.
+    '''
+    print('Roll more then "1" to kill the python.\n')
+    dice_conf = input('Type "roll" to roll the dice\n')
+
+    if dice_conf == 'roll':
+        return
+    if dice_conf != 'roll':
+        dice_roll_input()
+
+
+def roll_dice():
+    '''
+    Simulates rolling the dice and returning the result.
+    '''
+    random_dice = randint(1,6)
+    return random_dice
+
+
+def kill_python(dice):
+    '''
+    Based on the dice roll, either python gets killed or
+    it dodges the attack and user needs to roll again.
+    '''
+    if dice == 1:
+        print(f'You rolled: {dice} \n')
+        print('Python dodged your attack. Try again.\n')
+        dice_roll_input()
+    else:
+        print(f'You rolled: {dice} \n')
+        print('You killed the python!')
+
+
 def main():
     """
     Run all program functions
     """
-    start_game()
-    message(INTRO_STORY)
-    character = character_choice()
-    name = chose_name()
-    start_story(character, name)
-    next_move(character, name)
-
+    #start_game()
+    #message(INTRO_STORY)
+    #character = character_choice()
+    #name = chose_name()
+    #start_story(character, name)
+    #next_move(character, name)
+    #message(PYTHON)
+    dice_roll_input()
+    dice = roll_dice()
+    kill_python(dice)
+    
 
 print('Welcome to fantasy role playing game!\n')
 main()
