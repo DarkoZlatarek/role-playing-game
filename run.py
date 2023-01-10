@@ -55,6 +55,23 @@ PYTHON = '\nAs you step into The Forbidden forest, you feel the '\
     'then just dark elves.\n'\
     '\npython\nhealth: 10\nstrength: 5\ndefense: 2\n'
 
+DEMON = 'As you step over the python\'s dead body and continue '\
+    'follow the footprints,\nyou start to notice that trees '\
+    'are bare, without any leaves. Air is getting\nas thick '\
+    'as ever and as cold as you never experienced before. You '\
+    'remember\nthe old tales and know you are now approaching '\
+    'Harskelisia, the demon that\nwill kill you by just looking '\
+    'at you, but she will let you\npass if you solve here riddle.\n'\
+    '“Greetings, stranger. If you wonder to far from your home,'\
+    '\nyou might never go back.” cold and shaky voice says and '\
+    'the figure appears\nfrom behind the fog. “Please, '\
+    'Harskelisia, I am trying to catch\ndark elf Dralahi. He '\
+    'took the princess Astrid.\nCan you let me pass, please?” '\
+    'you ask.\n“If you want to eat meat, you need to kill the '\
+    'animal.\nIf you want to drink wine, you need to squash the '\
+    'grapes.\nIf you want to pass, you need to solve the riddle.”\n'
+
+
 dict_of_characters = {}
 warrior = Character('warrior', 200, 15, 20)
 mage = Character('mage', 130, 30, 10)
@@ -219,7 +236,7 @@ def roll_dice():
     '''
     Simulates rolling the dice and returning the result.
     '''
-    random_dice = randint(1,3)
+    random_dice = randint(1,6)
     return random_dice
 
 
@@ -233,7 +250,7 @@ def kill_python(dice):
         print('Python dodged your attack. Try again.\n')
     else:
         print(f'You rolled: {dice} \n')
-        print('You killed the python!')
+        print('You killed the python!\n')
 
 
 def attack_python():
@@ -251,14 +268,15 @@ def main():
     """
     Run all program functions
     """
-    #start_game()
-    #message(INTRO_STORY)
-    #character = character_choice()
-    #name = chose_name()
-    #start_story(character, name)
-    #next_move(character, name)
-    #message(PYTHON)
+    start_game()
+    message(INTRO_STORY)
+    character = character_choice()
+    name = chose_name()
+    start_story(character, name)
+    next_move(character, name)
+    message(PYTHON)
     attack_python()
+    message(DEMON)
    
 
 print('Welcome to fantasy role playing game!\n')
