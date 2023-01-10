@@ -219,7 +219,7 @@ def roll_dice():
     '''
     Simulates rolling the dice and returning the result.
     '''
-    random_dice = randint(1,6)
+    random_dice = randint(1,3)
     return random_dice
 
 
@@ -231,10 +231,20 @@ def kill_python(dice):
     if dice == 1:
         print(f'You rolled: {dice} \n')
         print('Python dodged your attack. Try again.\n')
-        dice_roll_input()
     else:
         print(f'You rolled: {dice} \n')
         print('You killed the python!')
+
+
+def attack_python():
+    '''
+    Function to loop through dice rolls until dice>1.
+    '''
+    dice = 1
+    while dice == 1:
+        dice_roll_input()
+        dice = roll_dice()
+        kill_python(dice)
 
 
 def main():
@@ -248,10 +258,8 @@ def main():
     #start_story(character, name)
     #next_move(character, name)
     #message(PYTHON)
-    dice_roll_input()
-    dice = roll_dice()
-    kill_python(dice)
-    
+    attack_python()
+   
 
 print('Welcome to fantasy role playing game!\n')
 main()
