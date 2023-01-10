@@ -32,10 +32,10 @@ INTRO_STORY = 'Many years ago, warriors, mages and dark elves '\
     'One day, they have crossed the line.....\n\n'
 
 COWARD = '“I am sorry, but I can not help you”. You go back to '\
-    'The Rusty Cog Inn, sit by the bar and order another rakia. '\
-    'All eyes were on you and you know exactly what everyone was '\
-    'thinking. You stand up and shout: “I can not save here!! Now '\
-    'leave me to drink in peace!!” You sit back down, finish your '\
+    'The Rusty Cog Inn, sit by\nthe bar and order another rakia. '\
+    'All eyes were on you and you know exactly\nwhat everyone was '\
+    'thinking. You stand up and shout: “I can not save here!!\nNow '\
+    'leave me to drink in peace!!” You sit back down,\nfinish your '\
     'glass and order another rakia.\n\n'
 
 F_FOREST = '”Alright. I will save the princes” you say and '\
@@ -57,7 +57,7 @@ PYTHON = '\nAs you step into The Forbidden forest, you feel the '\
 
 DEMON = 'As you step over the python\'s dead body and continue '\
     'follow the footprints,\nyou start to notice that trees '\
-    'are bare, without any leaves. Air is getting\nas thick '\
+    'are bare, without any leafs. Air is getting\nas thick '\
     'as ever and as cold as you never experienced before. You '\
     'remember\nthe old tales and know you are now approaching '\
     'Harskelisia, the demon that\nwill kill you by just looking '\
@@ -69,7 +69,8 @@ DEMON = 'As you step over the python\'s dead body and continue '\
     'took the princess Astrid.\nCan you let me pass, please?” '\
     'you ask.\n“If you want to eat meat, you need to kill the '\
     'animal.\nIf you want to drink wine, you need to squash the '\
-    'grapes.\nIf you want to pass, you need to solve the riddle.”\n'
+    'grapes.\nIf you want to pass, you need to solve the riddle.”'\
+    'says the demon.\n'
 
 
 dict_of_characters = {}
@@ -178,16 +179,16 @@ def start_story(char, name):
     '''
 
     story = f'You are sitting in the The Rusty Cog Inn, drinking your'\
-        ' usual drink, rakia. It is a homemade spirit made by the Inn\'s '\
-        'owner Balrus. You are chatting with Balrus over the bar when all '\
-        f'of a sudden a man came rushing in yelling: "Hey, {char} {name}!! '\
-        'The king needs you! You need to go quick, his daughter was taken '\
-        'by the evil dark elf Dralahi and you are the only person who '\
-        'dares to go against him. Go! Go! Go! Time is of essence!"'\
+        ' usual, rakia.\nIt is a homemade spirit made by the Inn\'s '\
+        'owner Balrus. You are\nchatting with Balrus over the bar when all '\
+        f'of a sudden a man came\nrushing in yelling: "Hey, {char} {name}!! '\
+        'The king needs you! You need\nto go quick, his daughter was taken '\
+        'by the evil dark elf Dralahi\nand you are the only person who '\
+        'dares to go against him.\nGo! Go! Go! Time is of essence!"'\
         '.\n.\n.\n.\n.\n.\n You quickly finish your rakia and start running '\
-        'to see the king. As you are approaching the king, he starts '\
-        f'running towards you and starts begging: "Please {name}, you '\
-        'need to save my Astrid. I beg of you."\n "Where did he took here" '\
+        'to see the king. As you are\napproaching the king, he starts '\
+        f'running towards you andstarts begging:\n"Please {name}, you '\
+        'need to save my Astrid. I beg of you."\n"Where did he took here" '\
         'you ask.\n"Into The Forbidden forest. Astrid does\'t like that '\
         'place." says the king.\n'\
         '"No one does, my king, apart from dark elves" you say.\n'\
@@ -262,6 +263,14 @@ def attack_python():
         dice_roll_input()
         dice = roll_dice()
         kill_python(dice)
+
+
+def solve_riddle():
+    '''
+    Placeholder
+    '''
+    print('What will it be, stranger? y/n\n')
+    riddle_input = input('What has a room but no door to enter?')
 
 
 def main():
