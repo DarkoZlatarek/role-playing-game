@@ -72,6 +72,24 @@ DEMON = 'As you step over the python\'s dead body and continue '\
     'grapes.\nIf you want to pass, you need to solve the riddle.”'\
     'says the demon.\n'
 
+WANT_A_RIDDLE_QUESTION = 'What will it be, stranger? y/n\n'
+
+GET_READY = '"Get ready stranger!" says Harskelisia\n'
+
+SHAME = '"Shame. Such a prity face you have." were the last words '\
+    'you hear before\neverything is black and you are no more.\n'
+
+WASTE_TIME = '"Don\'t waste my time!"'
+
+RIDDLE_QUESTION = 'What has a room but no door to enter?\n'
+
+CORRECT_RIDDLE_ANSWER = '"Well done stranger! I shall let you pass '\
+    'without ever seeing\nyour face!" says Harskelisia and '\
+    'disappears into the fog.\n'
+
+WRONG_RIDDLE_ANSWER = '"Too bad your brain is not as prety as your '\
+    'face is." were the\nlast words you hear before everything '\
+    'is black and you are no more.\n'
 
 dict_of_characters = {}
 warrior = Character('warrior', 200, 15, 20)
@@ -265,19 +283,46 @@ def attack_python():
         kill_python(dice)
 
 
+def want_a_riddle():
+    '''
+    Placeholder
+    '''
+    message(WANT_A_RIDDLE_QUESTION)
+    solve_the_riddle = input('')
+    riddle = solve_the_riddle.lower()
+
+    if riddle == 'y':
+        message(GET_READY)
+        solve_riddle()
+    elif riddle == 'n':
+        message(SHAME)
+        sys.exit()
+    elif riddle != 'y' or 'n':
+        message(WASTE_TIME)
+        want_a_riddle()
+
+
 def solve_riddle():
     '''
     Placeholder
     '''
-    print('What will it be, stranger? y/n\n')
-    riddle_input = input('What has a room but no door to enter?')
+    message(RIDDLE_QUESTION)
+    riddle_input = input('')
+    riddle_answer = riddle_input.lower()
+
+    if riddle_answer == 'mushroom':
+        message(CORRECT_RIDDLE_ANSWER)
+    if riddle_answer != 'mushroom':
+        message(WRONG_RIDDLE_ANSWER)
+        print('Game over. Thank you for playing!')
+        sys.exit()
 
 
 def main():
     """
     Run all program functions
     """
-    start_game()
+    '''start_game()
     message(INTRO_STORY)
     character = character_choice()
     name = chose_name()
@@ -285,7 +330,8 @@ def main():
     next_move(character, name)
     message(PYTHON)
     attack_python()
-    message(DEMON)
+    message(DEMON)'''
+    want_a_riddle()
    
 
 print('Welcome to fantasy role playing game!\n')
