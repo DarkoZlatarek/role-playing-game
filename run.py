@@ -91,9 +91,43 @@ WRONG_RIDDLE_ANSWER = '"Too bad your brain is not as prety as your '\
     'face is." were the\nlast words you hear before everything '\
     'is black and you are no more.\n'
 
+FINAL_FIGHT = 'As you feel good about yourself for surviving the '\
+    'demon, you continue\nfollowing the footprints. Suddenly, you '\
+    'smell an awful stench and you realize\nyou are getting close '\
+    'to the dark elves. You start running and finally see\nthem in '\
+    'the distance. As you are getting closer, you realize they are '\
+    'slowing\ndown and then stop. They have heard you. You see the '\
+    'princes tied up and\ncarried by Dralahi. He puts her down and '\
+    'commands his minions to attack you.\nTwo dark elves start '\
+    'running towards you, but they are no match for you.\nYou '\
+    'strike them both down in an instance.\nDralahi starts walking '\
+    'towards you. \nYou know this will not be an easy fight.\n\n'\
+
+dra_hp = 75
+dra_str = 40
+dra_def = 5
+
+dralahi_dict = {
+    'name': 'Dralahi',
+    'health': dra_hp,
+    'strength': dra_str,
+    'defense': dra_def
+    }
+
+dralahi = '\n'.join(f'{key}: {value}' for key, value in dralahi_dict.items())
+
+war_hp = 200
+war_str = 20
+war_def = 20
+
+mag_hp = 130
+mag_str = 30
+mag_def = 10
+
+
 dict_of_characters = {}
-warrior = Character('warrior', 200, 15, 20)
-mage = Character('mage', 130, 30, 10)
+warrior = Character('warrior', war_hp, war_str, war_def)
+mage = Character('mage', mag_hp, mag_str, mag_def)
 
 dict_of_characters[warrior.rase] = warrior
 dict_of_characters[mage.rase] = mage
@@ -246,6 +280,7 @@ def dice_roll_input():
     dice_conf = input('Type "roll" to roll the dice\n')
 
     if dice_conf == 'roll':
+        roll_dice()
         return
     if dice_conf != 'roll':
         dice_roll_input()
@@ -285,7 +320,8 @@ def attack_python():
 
 def want_a_riddle():
     '''
-    Placeholder
+    User will chose weather the want the riddle question.
+    If answer is "no" they will "die" and the game will be over.
     '''
     message(WANT_A_RIDDLE_QUESTION)
     solve_the_riddle = input('')
@@ -304,7 +340,8 @@ def want_a_riddle():
 
 def solve_riddle():
     '''
-    Placeholder
+    The user will answer the riddle question and based on
+    the answer they will go forward or the game will end.
     '''
     message(RIDDLE_QUESTION)
     riddle_input = input('')
@@ -318,21 +355,43 @@ def solve_riddle():
         sys.exit()
 
 
+def attacking_dralahi():
+    '''
+    Placeholder
+    '''
+    global dra_hp
+    global dralahi
+    dra_hp = 75
+    while dra_hp > 0:
+        dice_roll_input()
+        dice = roll_dice()
+        print(f'You rolled: {dice}')
+        if dice >= 3:
+            dra_hp = dra_hp - (war_str - dra_def)
+            dralahi_dict['health'] = dra_hp
+            dralahi = '\n'.join(f'{key}: {value}' for key, value in dralahi_dict.items())
+            print(dralahi)
+    print('You have deffited Drahali!')
+
+
 def main():
     """
     Run all program functions
     """
-    '''start_game()
-    message(INTRO_STORY)
-    character = character_choice()
-    name = chose_name()
-    start_story(character, name)
-    next_move(character, name)
-    message(PYTHON)
-    attack_python()
-    message(DEMON)'''
-    want_a_riddle()
-   
+    # start_game()
+    # message(INTRO_STORY)
+    # character = character_choice()
+    # name = chose_name()
+    # start_story(character, name)
+    # next_move(character, name)
+    # message(PYTHON)
+    # attack_python()
+    # message(DEMON)
+    # want_a_riddle()
+    # message(FINAL_FIGHT)
+    print(dralahi)
+    attacking_dralahi()
+    
 
 print('Welcome to fantasy role playing game!\n')
 main()
