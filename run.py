@@ -278,36 +278,65 @@ def attacking_dralahi():
     Placeholder
     '''
     global dra_hp
-    global dralahi
-    dra_hp = 75
-    while dra_hp > 0:
-        dice_roll_input()
-        dice = roll_dice()
-        print(f'You rolled: {dice}')
-        if dice >= 3:
-            dra_hp = dra_hp - (war_str - dra_def)
-            dralahi_dict['health'] = dra_hp
-            dralahi = '\n'.join(f'{key}: {value}' for key, value in dralahi_dict.items())
-            print(dralahi)
-    print('You have deffited Drahali!')
+    if war_hp > 0:
+        while dra_hp > 0:
+            dice_roll_input()
+            dice = roll_dice()
+            print(f'You rolled: {dice}')
+            
+            if dra_hp <= 0:
+                print('You have deffited Drahali!')
+                break
+            else:
+                if dice >= 1:
+                    dra_hp = dra_hp - (war_str - dra_def)
+                    dralahi_dict['health'] = dra_hp
+                    d_dralahi = '\n'.join(f'{key}: {value}' for key, value in dralahi_dict.items())
+                    print(d_dralahi)
+                else:
+                    print('Dralahi dodged the attack')
+                message(story.DRALAHI_ATTACK)
+                dralahi_attacking_warrior()
+    
+    else:
+        print('Good game!')
+
+            # def again_play():
+                # agk = input('Play again? (y/n')
+                # if agk == 'y':
+                    # main()
+                # elif agk == 'n':
+                    # sys.exit()
+                # else:
+                    # again_play()
 
 
-def dralahi_returning_attack(y):
+def dralahi_attacking_warrior():
     '''
     Placeholder
     '''
     global war_hp
-    global dict_of_characters
-    war_hp = 200
-    while war_hp > 0:
-        dice_roll_input()
-        dice = roll_dice()
-        print(f'You rolled: {dice}')
-        if dice >= 3:
-            war_hp = war_hp - (dra_str - war_def)
-            dict_of_characters[y.rase] = y
-            print(x)
-    print('You have deffited yorself!')
+
+    if dra_hp > 0:
+        print(dra_hp)
+        while war_hp > 0:
+            dice = roll_dice()
+            print(f'Dralahi rolled: {dice}')
+            if dice >= 1:
+                war_hp = war_hp - (dra_str - war_def)
+                w_warrior = Character('warrior', war_hp, war_str, war_def)
+                print(w_warrior)
+            else:
+                print('You successfully dodged the attack')
+        
+            if dra_hp <= 0:
+                print('You have deffited yorself!')
+                break
+            else:
+                print('Your turn to attack!')
+                attacking_dralahi()
+    else:
+        print('Good game!')
 
 
 def main():
@@ -317,17 +346,17 @@ def main():
     # start_game()
     # message(story.INTRO_STORY)
     character = character_choice()
-    # name = chose_name()
+    name = chose_name()
     # start_story(character, name)
-    # next_move(character, name)
+    next_move(character, name)
     # message(story.PYTHON)
     # attack_python()
     # message(story.DEMON)
     # want_a_riddle()
     # message(story.FINAL_FIGHT)
     # print(dralahi)
-    # attacking_dralahi()
-    dralahi_returning_attack(character)
+    attacking_dralahi()
+    dralahi_attacking_warrior()
     
 
 print('Welcome to fantasy role playing game!\n')

@@ -80,3 +80,5 @@ FINAL_FIGHT = 'As you feel good about yourself for surviving the '\
     'running towards you, but they are no match for you.\nYou '\
     'strike them both down in an instance.\nDralahi starts walking '\
     'towards you. \nYou know this will not be an easy fight.\n\n'
+
+DRALAHI_ATTACK = 'Dralahi will now attack. Defend yourself!\n'
