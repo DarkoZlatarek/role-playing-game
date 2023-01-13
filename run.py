@@ -1,9 +1,10 @@
 # Your code goes here.
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
-import time
-import sys
 from random import randint
+import sys
+import time
+import story
 
 
 class Character:
@@ -19,89 +20,6 @@ class Character:
     def __str__(self):
         return f'rase: {self.rase} \n health: {self.health} \n strength: {self.strength} \n defense: {self.defense}'
 
-
-INTRO_STORY = 'Many years ago, warriors, mages and dark elves '\
-    'lived in unity. They shared\nknowledge of their ancestors '\
-    'and the way of life between each other. Until\none day '\
-    'dark elves decided that warriors and mages are beneath '\
-    'them. Dark\nelves migrated away from the warriors and mages '\
-    'into the mountains. For many\nyears, they stick for '\
-    'themselves, but their resources were running low so\nthey '\
-    'started raiding villages of warriors and mages. '\
-    'Stealing their food,\nwomen and man for slaves. '\
-    'One day, they have crossed the line.....\n\n'
-
-COWARD = '“I am sorry, but I can not help you”. You go back to '\
-    'The Rusty Cog Inn, sit by\nthe bar and order another rakia. '\
-    'All eyes were on you and you know exactly\nwhat everyone was '\
-    'thinking. You stand up and shout: “I can not save here!!\nNow '\
-    'leave me to drink in peace!!” You sit back down,\nfinish your '\
-    'glass and order another rakia.\n\n'
-
-F_FOREST = '”Alright. I will save the princes” you say and '\
-    'head towards The Forbidden forest.\n'
-
-PYTHON = '\nAs you step into The Forbidden forest, you feel the '\
-    'sudden change on your\nskin. Air becomes heavier, colder '\
-    'and you feel like someone is watching you.\nYou can see '\
-    'the footprints on the path and you know these are from the '\
-    'dark\nelves because of the shape of them. Only three toes '\
-    'and double the size of\nyour own. You follow the footprints '\
-    'and all of a sudden, something jumps on\nyou from the bushes. '\
-    'You manage to fight it and toss it away from you onto\nthe '\
-    'footpath. Great big eyes are staring at you with fangs as long '\
-    'and sharp\nas butcher\'s knife. It is a python and you realize '\
-    'you need to fight it and\nthat there will be more danger here '\
-    'then just dark elves.\n'\
-    '\npython\nhealth: 10\nstrength: 5\ndefense: 2\n'
-
-DEMON = 'As you step over the python\'s dead body and continue '\
-    'follow the footprints,\nyou start to notice that trees '\
-    'are bare, without any leafs. Air is getting\nas thick '\
-    'as ever and as cold as you never experienced before. You '\
-    'remember\nthe old tales and know you are now approaching '\
-    'Harskelisia, the demon that\nwill kill you by just looking '\
-    'at you, but she will let you\npass if you solve here riddle.\n'\
-    '“Greetings, stranger. If you wonder to far from your home,'\
-    '\nyou might never go back.” cold and shaky voice says and '\
-    'the figure appears\nfrom behind the fog. “Please, '\
-    'Harskelisia, I am trying to catch\ndark elf Dralahi. He '\
-    'took the princess Astrid.\nCan you let me pass, please?” '\
-    'you ask.\n“If you want to eat meat, you need to kill the '\
-    'animal.\nIf you want to drink wine, you need to squash the '\
-    'grapes.\nIf you want to pass, you need to solve the riddle.”'\
-    'says the demon.\n'
-
-WANT_A_RIDDLE_QUESTION = 'What will it be, stranger? y/n\n'
-
-GET_READY = '"Get ready stranger!" says Harskelisia\n'
-
-SHAME = '"Shame. Such a prity face you have." were the last words '\
-    'you hear before\neverything is black and you are no more.\n'
-
-WASTE_TIME = '"Don\'t waste my time!"'
-
-RIDDLE_QUESTION = 'What has a room but no door to enter?\n'
-
-CORRECT_RIDDLE_ANSWER = '"Well done stranger! I shall let you pass '\
-    'without ever seeing\nyour face!" says Harskelisia and '\
-    'disappears into the fog.\n'
-
-WRONG_RIDDLE_ANSWER = '"Too bad your brain is not as prety as your '\
-    'face is." were the\nlast words you hear before everything '\
-    'is black and you are no more.\n'
-
-FINAL_FIGHT = 'As you feel good about yourself for surviving the '\
-    'demon, you continue\nfollowing the footprints. Suddenly, you '\
-    'smell an awful stench and you realize\nyou are getting close '\
-    'to the dark elves. You start running and finally see\nthem in '\
-    'the distance. As you are getting closer, you realize they are '\
-    'slowing\ndown and then stop. They have heard you. You see the '\
-    'princes tied up and\ncarried by Dralahi. He puts her down and '\
-    'commands his minions to attack you.\nTwo dark elves start '\
-    'running towards you, but they are no match for you.\nYou '\
-    'strike them both down in an instance.\nDralahi starts walking '\
-    'towards you. \nYou know this will not be an easy fight.\n\n'\
 
 dra_hp = 75
 dra_str = 40
@@ -192,8 +110,8 @@ def validate_input(choice):
     try:
         if choice not in dict_of_characters:
             raise ValueError('Sorry, don\'t know who that is.')
-    except ValueError as v_e:
-        print(f'{v_e}, chose between warrior or mage!\n')
+    except ValueError as err:
+        print(f'{err}, chose between warrior or mage!\n')
         return False
 
     return True
@@ -230,7 +148,7 @@ def start_story(char, name):
     time delay.
     '''
 
-    story = f'You are sitting in the The Rusty Cog Inn, drinking your'\
+    s_story = f'You are sitting in the The Rusty Cog Inn, drinking your'\
         ' usual, rakia.\nIt is a homemade spirit made by the Inn\'s '\
         'owner Balrus. You are\nchatting with Balrus over the bar when all '\
         f'of a sudden a man came\nrushing in yelling: "Hey, {char} {name}!! '\
@@ -246,7 +164,7 @@ def start_story(char, name):
         '"No one does, my king, apart from dark elves" you say.\n'\
         'Deep down you know you still love Astrid.\n'
 
-    for i in story:
+    for i in s_story:
         print(i, end='', flush=True)
         time.sleep(0.05)
 
@@ -260,10 +178,10 @@ def next_move(char, name):
     choice = save_princes.lower()
 
     if choice == 'a':
-        message(F_FOREST)
+        message(story.F_FOREST)
         return
     if choice == 'b':
-        message(COWARD)
+        message(story.COWARD)
         print(f'You became known as {char} {name} the coward.')
         sys.exit()
     elif choice != 'a' or 'b':
@@ -290,7 +208,7 @@ def roll_dice():
     '''
     Simulates rolling the dice and returning the result.
     '''
-    random_dice = randint(1,6)
+    random_dice = randint(1, 6)
     return random_dice
 
 
@@ -323,18 +241,18 @@ def want_a_riddle():
     User will chose weather the want the riddle question.
     If answer is "no" they will "die" and the game will be over.
     '''
-    message(WANT_A_RIDDLE_QUESTION)
+    message(story.WANT_A_RIDDLE_QUESTION)
     solve_the_riddle = input('')
     riddle = solve_the_riddle.lower()
 
     if riddle == 'y':
-        message(GET_READY)
+        message(story.GET_READY)
         solve_riddle()
     elif riddle == 'n':
-        message(SHAME)
+        message(story.SHAME)
         sys.exit()
     elif riddle != 'y' or 'n':
-        message(WASTE_TIME)
+        message(story.WASTE_TIME)
         want_a_riddle()
 
 
@@ -343,14 +261,14 @@ def solve_riddle():
     The user will answer the riddle question and based on
     the answer they will go forward or the game will end.
     '''
-    message(RIDDLE_QUESTION)
+    message(story.RIDDLE_QUESTION)
     riddle_input = input('')
     riddle_answer = riddle_input.lower()
 
     if riddle_answer == 'mushroom':
-        message(CORRECT_RIDDLE_ANSWER)
+        message(story.CORRECT_RIDDLE_ANSWER)
     if riddle_answer != 'mushroom':
-        message(WRONG_RIDDLE_ANSWER)
+        message(story.WRONG_RIDDLE_ANSWER)
         print('Game over. Thank you for playing!')
         sys.exit()
 
@@ -374,23 +292,42 @@ def attacking_dralahi():
     print('You have deffited Drahali!')
 
 
+def dralahi_returning_attack(y):
+    '''
+    Placeholder
+    '''
+    global war_hp
+    global dict_of_characters
+    war_hp = 200
+    while war_hp > 0:
+        dice_roll_input()
+        dice = roll_dice()
+        print(f'You rolled: {dice}')
+        if dice >= 3:
+            war_hp = war_hp - (dra_str - war_def)
+            dict_of_characters[y.rase] = y
+            print(x)
+    print('You have deffited yorself!')
+
+
 def main():
     """
     Run all program functions
     """
     # start_game()
-    # message(INTRO_STORY)
-    # character = character_choice()
+    # message(story.INTRO_STORY)
+    character = character_choice()
     # name = chose_name()
     # start_story(character, name)
     # next_move(character, name)
-    # message(PYTHON)
+    # message(story.PYTHON)
     # attack_python()
-    # message(DEMON)
+    # message(story.DEMON)
     # want_a_riddle()
-    # message(FINAL_FIGHT)
-    print(dralahi)
-    attacking_dralahi()
+    # message(story.FINAL_FIGHT)
+    # print(dralahi)
+    # attacking_dralahi()
+    dralahi_returning_attack(character)
     
 
 print('Welcome to fantasy role playing game!\n')
