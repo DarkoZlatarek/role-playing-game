@@ -413,7 +413,7 @@ def play_again():
             main()
         else:
             print("Goodbye")
-            break
+            sys.exit()
 
 
 def main():
