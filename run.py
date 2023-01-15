@@ -451,7 +451,9 @@ def dralahi_defeated_story(char, name):
 
 def play_again():
     '''
-    Placeholder.
+    Askes the user if they would like to play again. If input is "y"
+    resets the health points to initial ammount and runs the main 
+    function again.
     '''
     global WAR_HP
     global DRA_HP
