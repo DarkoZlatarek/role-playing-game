@@ -293,10 +293,34 @@ def warrior_vs_dralahi():
 
         if dra_hp <= 0:
             print('Good Game1')
-            break
         else:
             message(story.DRALAHI_ATTACK)
             dralahi_vs_warrior()
+
+
+def mage_vs_dralahi():
+    '''
+    Placeholder
+    '''
+    global dra_hp
+    while dra_hp > 0 and mag_hp != 0:
+        dice_roll_input()
+        dice = roll_dice()
+        print(f'You rolled: {dice}\n')
+
+        if dice >= 1:
+            dra_hp = dra_hp - (mag_str - dra_def)
+            dralahi_dict['health'] = dra_hp
+            d_dralahi = '\n'.join(f'{key}: {value}' for key, value in dralahi_dict.items())
+            print(f'{d_dralahi}\n')
+        else:
+            print('Dralahi dodged the attack\n')
+
+        if dra_hp <= 0:
+            print('Good Game1')
+        else:
+            message(story.DRALAHI_ATTACK)
+            dralahi_vs_mage()
 
 
 def dralahi_vs_warrior():
@@ -317,47 +341,81 @@ def dralahi_vs_warrior():
 
         if war_hp <= 0:
             print('Good Game2')
-            break
         else:
             warrior_vs_dralahi()
 
 
-def battle():
+def dralahi_vs_mage():
     '''
     Placeholder
     '''
-    if war_hp > 0:
-        warrior_vs_dralahi()
+    global mag_hp
+    while mag_hp > 0 and dra_hp != 0:
+        dice = roll_dice()
+        print(f'Dralahi rolled: {dice}\n')
 
-    if dra_hp > 0:
-        dralahi_vs_warrior()
+        if dice >= 1:
+            mag_hp = mag_hp - (dra_str - mag_def)
+            w_warrior = Character('warrior', mag_hp, mag_str, mag_def)
+            print(f'\n{w_warrior}\n')
+        else:
+            print('You successfully dodged the attack')
 
-'''
+        if mag_hp <= 0:
+            print('Good Game2')
+        else:
+            mage_vs_dralahi()
+
+
+def battle(char):
+    '''
+    Placeholder
+    '''
+    if char == "warrior":
+        if war_hp > 0:
+            warrior_vs_dralahi()
+
+        if dra_hp > 0:
+            dralahi_vs_warrior()
+
+    else:
+        if mag_hp > 0:
+            mage_vs_dralahi()
+
+        if dra_hp > 0:
+            dralahi_vs_mage()
+
+
 def play_again():
-    
+    '''
     Placeholder.
-    
+    '''
+    global war_hp
+    global dra_hp
+    global mag_hp
     while True:
         try_again = input('Would you like to play again? (Y/N)\n')
-        again = try_again.lower()
-        if again not in ('y', 'n'):
+        try_again = try_again.lower()
+        if try_again not in ('y', 'n'):
             print("Invalid input.")
             play_again()
-        if again == 'y':
+        if try_again == 'y':
+            war_hp = 200
+            dra_hp = 75
+            mag_hp = 130
             main()
         else:
             print("Goodbye")
-            sys.exit()
-            '''
+            break
 
 
 def main():
     """
     Run all program functions
     """
-    # start_game()
+    start_game()
     # message(story.INTRO_STORY)
-    # character = character_choice()
+    character = character_choice()
     # name = chose_name()
     # start_story(character, name)
     # next_move(character, name)
@@ -367,8 +425,9 @@ def main():
     # want_a_riddle()
     # message(story.FINAL_FIGHT)
     # print(dralahi)
-    battle()
+    battle(character)
 
 
 print('Welcome to fantasy role playing game!\n')
 main()
+play_again()
