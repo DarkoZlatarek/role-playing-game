@@ -1,6 +1,3 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
 from random import randint
 import sys
 import time
@@ -21,31 +18,31 @@ class Character:
         return f'rase: {self.rase} \n health: {self.health} \n strength: {self.strength} \n defense: {self.defense}'
 
 
-dra_hp = 75
-dra_str = 40
-dra_def = 5
+DRA_HP = 75
+DRA_STR = 40
+DRA_DEF = 5
 
 dralahi_dict = {
     'name': 'Dralahi',
-    'health': dra_hp,
-    'strength': dra_str,
-    'defense': dra_def
+    'health': DRA_HP,
+    'strength': DRA_STR,
+    'defense': DRA_DEF
     }
 
-dralahi = '\n'.join(f'{key}: {value}' for key, value in dralahi_dict.items())
+DRALAHI = '\n'.join(f'{key}: {value}' for key, value in dralahi_dict.items())
 
-war_hp = 200
-war_str = 20
-war_def = 20
+WAR_HP = 200
+WAR_STR = 20
+WAR_DEF = 20
 
-mag_hp = 130
-mag_str = 30
-mag_def = 10
+MAG_HP = 130
+MAG_STR = 30
+MAG_DEF = 10
 
 
 dict_of_characters = {}
-warrior = Character('warrior', war_hp, war_str, war_def)
-mage = Character('mage', mag_hp, mag_str, mag_def)
+warrior = Character('warrior', WAR_HP, WAR_STR, WAR_DEF)
+mage = Character('mage', MAG_HP, MAG_STR, MAG_DEF)
 
 dict_of_characters[warrior.rase] = warrior
 dict_of_characters[mage.rase] = mage
@@ -62,10 +59,10 @@ def start_game():
 
     if start == 'start':
         return
-    if start == 'exit':
+    elif start == 'exit':
         print('You could have at least try. Good bye!')
         sys.exit()
-    elif start != 'start' or 'exit':
+    else:
         print('Don\'t understand.')
         start_game()
 
@@ -135,9 +132,9 @@ def chose_name():
 
     if name_confirmed == 'y':
         return user_name
-    if name_confirmed == 'n':
+    elif name_confirmed == 'n':
         chose_name()
-    elif name_confirmed != 'y' or 'n':
+    else:
         print('Sorry, was that "y" or "n"?\n')
         input_name_check()
 
@@ -180,11 +177,11 @@ def next_move(char, name):
     if choice == 'a':
         message(story.F_FOREST)
         return
-    if choice == 'b':
+    elif choice == 'b':
         message(story.COWARD)
         print(f'You became known as {char} {name} the coward.')
         sys.exit()
-    elif choice != 'a' or 'b':
+    else:
         print('Sorry, didn\'t understand that.')
         next_move(char, name)
 
@@ -251,7 +248,7 @@ def want_a_riddle():
     elif riddle == 'n':
         message(story.SHAME)
         sys.exit()
-    elif riddle != 'y' or 'n':
+    else:
         message(story.WASTE_TIME)
         want_a_riddle()
 
@@ -278,21 +275,21 @@ def warrior_vs_dralahi():
     User tipes in "roll" to roll the dice. Based on the dice roll
     User will either hit Dralahi or Dralahi will dodge the attack.
     '''
-    global dra_hp
-    while dra_hp > 0 and war_hp != 0:
+    global DRA_HP
+    while DRA_HP > 0 and WAR_HP != 0:
         dice_roll_input()
         dice = roll_dice()
         print(f'You rolled: {dice}\n')
 
         if dice >= 1:
-            dra_hp = dra_hp - (war_str - dra_def)
-            dralahi_dict['health'] = dra_hp
+            DRA_HP = DRA_HP - (WAR_STR - DRA_DEF)
+            dralahi_dict['health'] = DRA_HP
             d_dralahi = '\n'.join(f'{key}: {value}' for key, value in dralahi_dict.items())
             print(f'{d_dralahi}\n')
         else:
             print('Dralahi dodged the attack\n')
 
-        if dra_hp <= 0:
+        if DRA_HP <= 0:
             print('You have defeated!\n')
         else:
             message(story.DRALAHI_ATTACK)
@@ -304,21 +301,21 @@ def mage_vs_dralahi():
     User tipes in "roll" to roll the dice. Based on the dice roll
     User will either hit Dralahi or Dralahi will dodge the attack.
     '''
-    global dra_hp
-    while dra_hp > 0 and mag_hp != 0:
+    global DRA_HP
+    while DRA_HP > 0 and MAG_HP != 0:
         dice_roll_input()
         dice = roll_dice()
         print(f'You rolled: {dice}\n')
 
         if dice >= 1:
-            dra_hp = dra_hp - (mag_str - dra_def)
-            dralahi_dict['health'] = dra_hp
+            DRA_HP = DRA_HP - (MAG_STR - DRA_DEF)
+            dralahi_dict['health'] = DRA_HP
             d_dralahi = '\n'.join(f'{key}: {value}' for key, value in dralahi_dict.items())
             print(f'{d_dralahi}\n')
         else:
             print('Dralahi dodged the attack\n')
 
-        if dra_hp <= 0:
+        if DRA_HP <= 0:
             print('You have defeated!\n')
         else:
             message(story.DRALAHI_ATTACK)
@@ -331,19 +328,19 @@ def dralahi_vs_warrior():
     the roll outcome Dralahi will either attack the
     warrior or warrior will dodge the attack.
     '''
-    global war_hp
-    while war_hp > 0 and dra_hp != 0:
+    global WAR_HP
+    while WAR_HP > 0 and DRA_HP != 0:
         dice = roll_dice()
         print(f'Dralahi rolled: {dice}\n')
 
         if dice >= 1:
-            war_hp = war_hp - (dra_str - war_def)
-            w_warrior = Character('warrior', war_hp, war_str, war_def)
+            WAR_HP = WAR_HP - (DRA_STR - WAR_DEF)
+            w_warrior = Character('warrior', WAR_HP, WAR_STR, WAR_DEF)
             print(f'\n{w_warrior}\n')
         else:
             print('You successfully dodged the attack')
 
-        if war_hp <= 0:
+        if WAR_HP <= 0:
             print('Dralahi have defeated you!\n')
         else:
             warrior_vs_dralahi()
@@ -355,19 +352,19 @@ def dralahi_vs_mage():
     the roll outcome Dralahi will either attack the
     mage or mage will dodge the attack.
     '''
-    global mag_hp
-    while mag_hp > 0 and dra_hp != 0:
+    global MAG_HP
+    while MAG_HP > 0 and DRA_HP != 0:
         dice = roll_dice()
         print(f'Dralahi rolled: {dice}\n')
 
         if dice >= 1:
-            mag_hp = mag_hp - (dra_str - mag_def)
-            w_warrior = Character('warrior', mag_hp, mag_str, mag_def)
+            MAG_HP = MAG_HP - (DRA_STR - MAG_DEF)
+            w_warrior = Character('warrior', MAG_HP, MAG_STR, MAG_DEF)
             print(f'\n{w_warrior}\n')
         else:
             print('You successfully dodged the attack')
 
-        if mag_hp <= 0:
+        if MAG_HP <= 0:
             print('Dralahi have defeated you!\n')
         else:
             mage_vs_dralahi()
@@ -379,17 +376,17 @@ def battle(char):
     appropriate functions will run.
     '''
     if char == "warrior":
-        if war_hp > 0:
+        if WAR_HP > 0:
             warrior_vs_dralahi()
 
-        if dra_hp > 0:
+        if DRA_HP > 0:
             dralahi_vs_warrior()
 
     else:
-        if mag_hp > 0:
+        if MAG_HP > 0:
             mage_vs_dralahi()
 
-        if dra_hp > 0:
+        if DRA_HP > 0:
             dralahi_vs_mage()
 
 
@@ -397,9 +394,9 @@ def play_again():
     '''
     Placeholder.
     '''
-    global war_hp
-    global dra_hp
-    global mag_hp
+    global WAR_HP
+    global DRA_HP
+    global MAG_HP
     while True:
         try_again = input('Would you like to play again? (Y/N)\n')
         try_again = try_again.lower()
@@ -407,9 +404,9 @@ def play_again():
             print("Invalid input.")
             play_again()
         if try_again == 'y':
-            war_hp = 200
-            dra_hp = 75
-            mag_hp = 130
+            WAR_HP = 200
+            DRA_HP = 75
+            MAG_HP = 130
             main()
         else:
             print("Goodbye")
@@ -431,7 +428,7 @@ def main():
     # message(story.DEMON)
     want_a_riddle()
     # message(story.FINAL_FIGHT)
-    # print(dralahi)
+    # print(DRALAHI)
     # battle(character)
 
 

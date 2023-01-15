@@ -1,3 +1,17 @@
+RULES = 'Through the adventure of saving the princes, you will '\
+    'encounter various\nenemies and dangers. If you come across '\
+    'the enemy you need to fight, the\noutcome of the battle will '\
+    'be decided by the dice roll. Health points lost\nby the attack '\
+    'is calculated as below:\n defender\'s health is reduced based\n'\
+    'on the difference between attacker\'s strength and defender\'s '\
+    'defense.\nIf defender\'s defense is higher than attacker\'s '\
+    'attack, defender will not\nlose any health points. If attacker\'s '\
+    'attack is higher than defender\'s\ndefense, defender will lose '\
+    'health points based on that difference.\nIf you come across '\
+    'the demon, you will be given a riddle to solve.\nThe answer '\
+    'is one word only and you have one chance only \- be careful '\
+    'with your answer.\nEnjoy!'
+
 INTRO_STORY = 'Many years ago, warriors, mages and dark elves '\
     'lived in unity. They shared\nknowledge of their ancestors '\
     'and the way of life between each other. Until\none day '\
@@ -57,7 +71,7 @@ GET_READY = '"Get ready stranger!" says Harskelisia\n'
 SHAME = '"Shame. Such a prity face you have." were the last words '\
     'you hear before\neverything is black and you are no more.\n'
 
-WASTE_TIME = '"Don\'t waste my time!"'
+WASTE_TIME = '"Don\'t waste my time!"\n'
 
 RIDDLE_QUESTION = 'What has a room but no door to enter?\n'
 
