@@ -35,7 +35,7 @@ WAR_HP = 200
 WAR_STR = 20
 WAR_DEF = 20
 
-MAG_HP = 130
+MAG_HP = 120
 MAG_STR = 30
 MAG_DEF = 10
 
@@ -363,7 +363,7 @@ def dralahi_vs_warrior():
             print('\nYou successfully dodged the attack!\n')
 
         if WAR_HP <= 0:
-            print('Dralahi have defeated you!\n')
+            break
         else:
             warrior_vs_dralahi()
 
@@ -388,8 +388,7 @@ def dralahi_vs_mage():
             print('\nYou successfully dodged the attack!\n')
 
         if MAG_HP <= 0:
-            print('Dralahi have defeated you!\n')
-            continue
+            break
         else:
             mage_vs_dralahi()
 
@@ -400,17 +399,13 @@ def battle(char):
     appropriate functions will run.
     '''
     if char == "warrior":
-        if WAR_HP > 0 and DRA_HP != 0:
+        if WAR_HP and DRA_HP != 0:
             warrior_vs_dralahi()
-
-        if DRA_HP > 0 and WAR_HP != 0:
             dralahi_vs_warrior()
 
     else:
-        if MAG_HP > 0 and DRA_HP != 0:
+        if MAG_HP and DRA_HP != 0:
             mage_vs_dralahi()
-
-        if DRA_HP > 0 and MAG_HP != 0:
             dralahi_vs_mage()
 
 
@@ -470,7 +465,7 @@ def play_again():
         if try_again == 'y':
             WAR_HP = 200
             DRA_HP = 75
-            MAG_HP = 130
+            MAG_HP = 120
             main()
         else:
             print('Next time then!')
