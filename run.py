@@ -50,13 +50,33 @@ dict_of_characters[mage.rase] = mage
 
 def start_game():
     '''
-    User will choose if he want's to start the game or quit
-    before even trying.
+    User will choose if he want's to start the game, read
+    the rules or quit before even trying.
     '''
 
-    input_start = input('Type "start" to start the game or "exit" to quit:\n')
-    start = input_start.lower()
+    input_start = input('Type "start" to start the game, "rules" to see rules or "exit" to quit:\n')
+    input_start = input_start.lower()
 
+    if input_start == 'start':
+        return
+    if input_start == 'exit':
+        print('You could have at least try. Good bye!')
+        sys.exit()
+    elif input_start == 'rules':
+        print(story.RULES)
+        start_or_exit()
+    else:
+        print('Don\'t understand.')
+        start_game()
+
+
+def start_or_exit():
+    '''
+    User will choose if he want's to start the game
+    or quit before even trying.
+    '''
+    start = input('Type "start" to start the game or "exit" to quit:\n')
+    start = start.lower()
     if start == 'start':
         return
     elif start == 'exit':
@@ -64,7 +84,7 @@ def start_game():
         sys.exit()
     else:
         print('Don\'t understand.')
-        start_game()
+        start_or_exit()
 
 
 def message(string):

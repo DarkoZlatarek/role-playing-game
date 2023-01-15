@@ -1,16 +1,17 @@
-RULES = 'Through the adventure of saving the princes, you will '\
+RULES = '\nRULES:\n'\
+    'Through the adventure of saving the princes, you will '\
     'encounter various\nenemies and dangers. If you come across '\
     'the enemy you need to fight, the\noutcome of the battle will '\
     'be decided by the dice roll. Health points lost\nby the attack '\
-    'is calculated as below:\n defender\'s health is reduced based\n'\
-    'on the difference between attacker\'s strength and defender\'s '\
-    'defense.\nIf defender\'s defense is higher than attacker\'s '\
-    'attack, defender will not\nlose any health points. If attacker\'s '\
-    'attack is higher than defender\'s\ndefense, defender will lose '\
-    'health points based on that difference.\nIf you come across '\
+    'is calculated as below:\ndefender\'s health is reduced based'\
+    'on the difference between attacker\'s\nstrength and defender\'s '\
+    'defense.If defender\'s defense is higher than\nattacker\'s '\
+    'attack, defender will notlose any health points. If attacker\'s '\
+    '\nattack is higher than defender\'s defense, defender will lose '\
+    'health points\nbased on that difference.\n\nIf you come across '\
     'the demon, you will be given a riddle to solve.\nThe answer '\
-    'is one word only and you have one chance only \- be careful '\
-    'with your answer.\nEnjoy!'
+    'is one word only and you have one\nchance only - be careful '\
+    'with your answer.\nEnjoy!\n'
 
 INTRO_STORY = 'Many years ago, warriors, mages and dark elves '\
     'lived in unity. They shared\nknowledge of their ancestors '\
