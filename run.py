@@ -273,7 +273,7 @@ def solve_riddle():
         sys.exit()
 
 
-def attacking_dralahi():
+def warrior_vs_dralahi():
     '''
     Placeholder
     '''
@@ -281,7 +281,7 @@ def attacking_dralahi():
     while dra_hp > 0 and war_hp != 0:
         dice_roll_input()
         dice = roll_dice()
-        print(f'You rolled: {dice}')
+        print(f'You rolled: {dice}\n')
 
         if dice >= 1:
             dra_hp = dra_hp - (war_str - dra_def)
@@ -292,20 +292,21 @@ def attacking_dralahi():
             print('Dralahi dodged the attack\n')
 
         if dra_hp <= 0:
+            print('Good Game1')
             break
         else:
             message(story.DRALAHI_ATTACK)
-            dralahi_attacking_warrior()
+            dralahi_vs_warrior()
 
 
-def dralahi_attacking_warrior():
+def dralahi_vs_warrior():
     '''
     Placeholder
     '''
     global war_hp
     while war_hp > 0 and dra_hp != 0:
         dice = roll_dice()
-        print(f'Dralahi rolled: {dice}')
+        print(f'Dralahi rolled: {dice}\n')
 
         if dice >= 1:
             war_hp = war_hp - (dra_str - war_def)
@@ -313,27 +314,41 @@ def dralahi_attacking_warrior():
             print(f'\n{w_warrior}\n')
         else:
             print('You successfully dodged the attack')
-        
+
         if war_hp <= 0:
+            print('Good Game2')
             break
         else:
-            attacking_dralahi()
+            warrior_vs_dralahi()
 
 
-def attacking():
+def battle():
     '''
     Placeholder
     '''
     if war_hp > 0:
-        attacking_dralahi()
-    else:
-        print('good game')
-    
+        warrior_vs_dralahi()
+
     if dra_hp > 0:
-        dralahi_attacking_warrior()
-    else:
-        print('good game')
-        
+        dralahi_vs_warrior()
+
+'''
+def play_again():
+    
+    Placeholder.
+    
+    while True:
+        try_again = input('Would you like to play again? (Y/N)\n')
+        again = try_again.lower()
+        if again not in ('y', 'n'):
+            print("Invalid input.")
+            play_again()
+        if again == 'y':
+            main()
+        else:
+            print("Goodbye")
+            sys.exit()
+            '''
 
 
 def main():
@@ -347,12 +362,12 @@ def main():
     # start_story(character, name)
     # next_move(character, name)
     # message(story.PYTHON)
-    attack_python()
+    # attack_python()
     # message(story.DEMON)
     # want_a_riddle()
     # message(story.FINAL_FIGHT)
     # print(dralahi)
-    # attacking()
+    battle()
 
 
 print('Welcome to fantasy role playing game!\n')
