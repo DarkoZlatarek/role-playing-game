@@ -48,6 +48,9 @@ dict_of_characters[warrior.rase] = warrior
 dict_of_characters[mage.rase] = mage
 
 
+# def initial_method():
+
+
 def start_game():
     '''
     User will choose if he want's to start the game, read
@@ -421,7 +424,7 @@ def play_again():
         try_again = input('Would you like to play again? (Y/N)\n')
         try_again = try_again.lower()
         if try_again not in ('y', 'n'):
-            print("Invalid input.")
+            print('Don\'t understand.\n')
             play_again()
         if try_again == 'y':
             WAR_HP = 200
@@ -429,7 +432,7 @@ def play_again():
             MAG_HP = 130
             main()
         else:
-            print("Goodbye")
+            print('Thank you for playing!')
             sys.exit()
 
 
@@ -437,7 +440,8 @@ def main():
     """
     Run all program functions
     """
-    start_game()
+    print(story.INITIAL)
+    # start_game()
     # message(story.INTRO_STORY)
     # character = character_choice()
     # name = chose_name()
@@ -446,7 +450,7 @@ def main():
     # message(story.PYTHON)
     # attack_python()
     # message(story.DEMON)
-    want_a_riddle()
+    # want_a_riddle()
     # message(story.FINAL_FIGHT)
     # print(DRALAHI)
     # battle(character)
