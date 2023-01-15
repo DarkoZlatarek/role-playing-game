@@ -16,21 +16,21 @@ INITIAL = ''\
     '..#####.##..#######..########..######.....##...      \n\n'\
     'Welcome to HERO\'S QUEST!\nThis is a role playing game where your '\
     'mission is to save the princes\nfrom the hands of evil dark elves.\n'\
-    'Adventure will not be easy.\nHope you are ready!'
+    'Adventure will not be easy.\nHope you are ready!\n'
 
 RULES = '\nRULES:\n'\
     'Through the adventure of saving the princes, you will '\
     'encounter various\nenemies and dangers. If you come across '\
     'the enemy you need to fight, the\noutcome of the battle will '\
     'be decided by the dice roll. Health points lost\nby the attack '\
-    'is calculated as below:\ndefender\'s health is reduced based'\
+    'is calculated as below:\ndefender\'s health is reduced based '\
     'on the difference between attacker\'s\nstrength and defender\'s '\
-    'defense.If defender\'s defense is higher than\nattacker\'s '\
-    'attack, defender will notlose any health points. If attacker\'s '\
+    'defense. If defender\'s defense is higher than\nattacker\'s '\
+    'attack, defender will not lose any health points. If attacker\'s '\
     '\nattack is higher than defender\'s defense, defender will lose '\
     'health points\nbased on that difference.\n\nIf you come across '\
     'the demon, you will be given a riddle to solve.\nThe answer '\
-    'is one word only and you have one\nchance only - be careful '\
+    'is one word only and you have one chance only.\nBe careful '\
     'with your answer.\nEnjoy!\n'
 
 INTRO_STORY = 'Many years ago, warriors, mages and dark elves '\
@@ -66,20 +66,20 @@ PYTHON = '\nAs you step into The Forbidden forest, you feel the '\
     'and sharp\nas butcher\'s knife. It is a python and you realize '\
     'you need to fight it and\nthat there will be more danger here '\
     'then just dark elves.\n'\
-    '\npython\nhealth: 10\nstrength: 5\ndefense: 2\n'
+    '\npython\nhealth: 10\nstrength: 5\ndefense: 2\n\n'
 
 DEMON = 'As you step over the python\'s dead body and continue '\
-    'follow the footprints,\nyou start to notice that trees '\
-    'are bare, without any leafs. Air is getting\nas thick '\
+    'to follow the footprints,\nyou start to notice that trees '\
+    'are bare, without any leaves. Air is getting\nas thick '\
     'as ever and as cold as you never experienced before. You '\
     'remember\nthe old tales and know you are now approaching '\
     'Harskelisia, the demon that\nwill kill you by just looking '\
-    'at you, but she will let you\npass if you solve here riddle.\n'\
-    '“Greetings, stranger. If you wonder to far from your home,'\
+    'at you, but she will let you\npass if you solve her riddle.\n'\
+    '\n“Greetings, stranger. If you wonder to far from your home,'\
     '\nyou might never go back.” cold and shaky voice says and '\
-    'the figure appears\nfrom behind the fog. “Please, '\
-    'Harskelisia, I am trying to catch\ndark elf Dralahi. He '\
-    'took the princess Astrid.\nCan you let me pass, please?” '\
+    'the figure appears\nfrom behind the fog.\n“Please, '\
+    'Harskelisia, I am trying to catch dark elf Dralahi. He '\
+    'took the\nprincess Astrid. Can you let me pass, please?” '\
     'you ask.\n“If you want to eat meat, you need to kill the '\
     'animal.\nIf you want to drink wine, you need to squash the '\
     'grapes.\nIf you want to pass, you need to solve the riddle.”'\
@@ -114,6 +114,9 @@ FINAL_FIGHT = 'As you feel good about yourself for surviving the '\
     'commands his minions to attack you.\nTwo dark elves start '\
     'running towards you, but they are no match for you.\nYou '\
     'strike them both down in an instance.\nDralahi starts walking '\
-    'towards you. \nYou know this will not be an easy fight.\n\n'
+    'towards you. \nYou know this will not be an easy fight.\n'\
+    'Defeat Dralahi to save the princes!\n\n'\
+    'Roll 3 or more to hit Dralahi.\n'\
+    'If Dralahi rolls more then 4, he will hit you.\n\n'
 
 DRALAHI_ATTACK = 'Dralahi will now attack. Defend yourself!\n'

@@ -48,9 +48,6 @@ dict_of_characters[warrior.rase] = warrior
 dict_of_characters[mage.rase] = mage
 
 
-# def initial_method():
-
-
 def start_game():
     '''
     User will choose if he want's to start the game, read
@@ -129,9 +126,9 @@ def validate_input(choice):
     '''
     try:
         if choice not in dict_of_characters:
-            raise ValueError('Sorry, don\'t know who that is.')
+            raise ValueError('\nSorry, don\'t know who that is.')
     except ValueError as err:
-        print(f'{err}, chose between warrior or mage!\n')
+        print(f'{err} Chose between warrior or mage!\n')
         return False
 
     return True
@@ -147,7 +144,7 @@ def chose_name():
         '''
         User confirming that the name they typed is the one they want.
         '''
-        name_check = input(f'Is {user_name} name you want? y/n\n')
+        name_check = input(f'Is {user_name} name you want? (Y/N)\n')
         name_confirmation = name_check.lower()
         return name_confirmation
 
@@ -168,7 +165,7 @@ def start_story(char, name):
     time delay.
     '''
 
-    s_story = f'You are sitting in the The Rusty Cog Inn, drinking your'\
+    s_story = f'\nYou are sitting in the The Rusty Cog Inn, drinking your'\
         ' usual, rakia.\nIt is a homemade spirit made by the Inn\'s '\
         'owner Balrus. You are\nchatting with Balrus over the bar when all '\
         f'of a sudden a man came\nrushing in yelling: "Hey, {char} {name}!! '\
@@ -181,8 +178,7 @@ def start_story(char, name):
         'need to save my Astrid. I beg of you."\n"Where did he took here" '\
         'you ask.\n"Into The Forbidden forest. Astrid does\'t like that '\
         'place." says the king.\n'\
-        '"No one does, my king, apart from dark elves" you say.\n'\
-        'Deep down you know you still love Astrid.\n'
+        '"No one does, my king, apart from dark elves" you say.\n'
 
     for i in s_story:
         print(i, end='', flush=True)
@@ -194,7 +190,7 @@ def next_move(char, name):
     User chooses if he wants to go after the princes or not.
     '''
     
-    save_princes = input('What will you do? A/B\nA) Save the princes\nB) Go back to The Rusty Cog Inn\n')
+    save_princes = input('\nWhat will you do?\nA) Save the princes\nB) Go back to The Rusty Cog Inn\n')
     choice = save_princes.lower()
 
     if choice == 'a':
@@ -304,7 +300,7 @@ def warrior_vs_dralahi():
         dice = roll_dice()
         print(f'You rolled: {dice}\n')
 
-        if dice >= 1:
+        if dice >= 3:
             DRA_HP = DRA_HP - (WAR_STR - DRA_DEF)
             dralahi_dict['health'] = DRA_HP
             d_dralahi = '\n'.join(f'{key}: {value}' for key, value in dralahi_dict.items())
@@ -313,7 +309,8 @@ def warrior_vs_dralahi():
             print('Dralahi dodged the attack\n')
 
         if DRA_HP <= 0:
-            print('You have defeated!\n')
+            print('You have defeated Dralahi!\n')
+            dralahi_defeated(character, name)
         else:
             message(story.DRALAHI_ATTACK)
             dralahi_vs_warrior()
@@ -330,7 +327,7 @@ def mage_vs_dralahi():
         dice = roll_dice()
         print(f'You rolled: {dice}\n')
 
-        if dice >= 1:
+        if dice >= 3:
             DRA_HP = DRA_HP - (MAG_STR - DRA_DEF)
             dralahi_dict['health'] = DRA_HP
             d_dralahi = '\n'.join(f'{key}: {value}' for key, value in dralahi_dict.items())
@@ -339,7 +336,8 @@ def mage_vs_dralahi():
             print('Dralahi dodged the attack\n')
 
         if DRA_HP <= 0:
-            print('You have defeated!\n')
+            print('You have defeated Dralahi!\n')
+            dralahi_defeated(character, name)
         else:
             message(story.DRALAHI_ATTACK)
             dralahi_vs_mage()
@@ -354,9 +352,9 @@ def dralahi_vs_warrior():
     global WAR_HP
     while WAR_HP > 0 and DRA_HP != 0:
         dice = roll_dice()
-        print(f'Dralahi rolled: {dice}\n')
+        print(f'Dralahi rolled: {dice}')
 
-        if dice >= 1:
+        if dice > 4:
             WAR_HP = WAR_HP - (DRA_STR - WAR_DEF)
             w_warrior = Character('warrior', WAR_HP, WAR_STR, WAR_DEF)
             print(f'\n{w_warrior}\n')
@@ -378,9 +376,9 @@ def dralahi_vs_mage():
     global MAG_HP
     while MAG_HP > 0 and DRA_HP != 0:
         dice = roll_dice()
-        print(f'Dralahi rolled: {dice}\n')
+        print(f'Dralahi rolled: {dice}')
 
-        if dice >= 1:
+        if dice > 4:
             MAG_HP = MAG_HP - (DRA_STR - MAG_DEF)
             w_warrior = Character('warrior', MAG_HP, MAG_STR, MAG_DEF)
             print(f'\n{w_warrior}\n')
@@ -413,6 +411,34 @@ def battle(char):
             dralahi_vs_mage()
 
 
+def dralahi_defeated(char, name):
+    '''
+    Prints the string to the terminal letter by letter with
+    time delay.
+    '''
+
+    s_story = f'You run towards the princes to untie her. She is unconscious. '\
+        'You check if she\nis still alive and she is. You lift her up and start '\
+        'your way back where\nyou came from. On the way, you came across another '\
+        'python, but you easily fight\nhim off. Princes is still unconscious as '\
+        'you approach the end of The Forbidden\nForest. Stepping out of The '\
+        'Forbidden Forest, you see the king and the queen\nnervously waiting not '\
+        'far away and looking at where you came out. They start\nrunning towards '\
+        'you. “Get the medic, quick! She is alive, but barely.” You\nyell. You '\
+        'take the princes into the palace where you find the medic. You '\
+        'place\nprinces on the table and the medic examines her. “She will live!” '\
+        f'says\nthe medic.\n“Thank you {char} {name}! How can we ever repay you?” '\
+        'asks the king.\n“Dralahi will bother us no more. You can open a tab for '\
+        'me in The Rusty Cog Inn.\nThat would be nice.” you say.\n“Consider it '\
+        f'done, {char} {name}! Thank you again!” says the king.\n\nYou make your '\
+        'way to The Rusty Cog Inn\n.\n.\n.\n.\n.\n.\nWord will spread and you will '\
+        f'become known as The Hero {char} {name}!\n'
+
+    for i in s_story:
+        print(i, end='', flush=True)
+        time.sleep(0.05)
+
+
 def play_again():
     '''
     Placeholder.
@@ -441,21 +467,21 @@ def main():
     Run all program functions
     """
     print(story.INITIAL)
-    # start_game()
-    # message(story.INTRO_STORY)
-    # character = character_choice()
-    # name = chose_name()
-    # start_story(character, name)
-    # next_move(character, name)
-    # message(story.PYTHON)
-    # attack_python()
-    # message(story.DEMON)
-    # want_a_riddle()
-    # message(story.FINAL_FIGHT)
-    # print(DRALAHI)
-    # battle(character)
+    start_game()
+    message(story.INTRO_STORY)
+    character = character_choice()
+    name = chose_name()
+    start_story(character, name)
+    next_move(character, name)
+    message(story.PYTHON)
+    attack_python()
+    message(story.DEMON)
+    want_a_riddle()
+    message(story.FINAL_FIGHT)
+    print(' ')
+    print(DRALAHI)
+    battle(character)
 
 
-print('Welcome to fantasy role playing game!\n')
 main()
 play_again()
