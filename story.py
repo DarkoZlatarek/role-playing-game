@@ -33,7 +33,7 @@ RULES = '\nRULES:\n'\
     'is one word only and you have one chance only.\nBe careful '\
     'with your answer.\nEnjoy!\n'
 
-INTRO_STORY = 'Many years ago, warriors, mages and dark elves '\
+INTRO_STORY = '\nMany years ago, warriors, mages and dark elves '\
     'lived in unity. They shared\nknowledge of their ancestors '\
     'and the way of life between each other. Until\none day '\
     'dark elves decided that warriors and mages are beneath '\
@@ -74,10 +74,10 @@ DEMON = 'As you step over the python\'s dead body and continue '\
     'as ever and as cold as you never experienced before. You '\
     'remember\nthe old tales and know you are now approaching '\
     'Harskelisia, the demon that\nwill kill you by just looking '\
-    'at you, but she will let you\npass if you solve her riddle.\n'\
+    'at you, but she will let you pass if you\nsolve her riddle.\n'\
     '\n“Greetings, stranger. If you wonder to far from your home,'\
-    '\nyou might never go back.” cold and shaky voice says and '\
-    'the figure appears\nfrom behind the fog.\n“Please, '\
+    ' you might never go\nback.” cold and shaky voice says and '\
+    'the figure appears from behind the fog.\n“Please, '\
     'Harskelisia, I am trying to catch dark elf Dralahi. He '\
     'took the\nprincess Astrid. Can you let me pass, please?” '\
     'you ask.\n“If you want to eat meat, you need to kill the '\
@@ -85,9 +85,9 @@ DEMON = 'As you step over the python\'s dead body and continue '\
     'grapes.\nIf you want to pass, you need to solve the riddle.”'\
     'says the demon.\n'
 
-WANT_A_RIDDLE_QUESTION = 'What will it be, stranger? y/n\n'
+WANT_A_RIDDLE_QUESTION = 'What will it be, stranger? (Y/N)\n'
 
-GET_READY = '"Get ready stranger!" says Harskelisia\n'
+GET_READY = '\n"Get ready stranger!" says Harskelisia\n'
 
 SHAME = '"Shame. Such a prity face you have." were the last words '\
     'you hear before\neverything is black and you are no more.\n'
@@ -96,7 +96,7 @@ WASTE_TIME = '"Don\'t waste my time!"\n'
 
 RIDDLE_QUESTION = 'What has a room but no door to enter?\n'
 
-CORRECT_RIDDLE_ANSWER = '"Well done stranger! I shall let you pass '\
+CORRECT_RIDDLE_ANSWER = '\n"Well done stranger! I shall let you pass '\
     'without ever seeing\nyour face!" says Harskelisia and '\
     'disappears into the fog.\n'
 
@@ -104,7 +104,7 @@ WRONG_RIDDLE_ANSWER = '"Too bad your brain is not as prety as your '\
     'face is." were the\nlast words you hear before everything '\
     'is black and you are no more.\n'
 
-FINAL_FIGHT = 'As you feel good about yourself for surviving the '\
+FINAL_FIGHT = '\nAs you feel good about yourself for surviving the '\
     'demon, you continue\nfollowing the footprints. Suddenly, you '\
     'smell an awful stench and you realize\nyou are getting close '\
     'to the dark elves. You start running and finally see\nthem in '\
@@ -120,3 +120,7 @@ FINAL_FIGHT = 'As you feel good about yourself for surviving the '\
     'If Dralahi rolls more then 4, he will hit you.\n\n'
 
 DRALAHI_ATTACK = 'Dralahi will now attack. Defend yourself!\n'
+
+DRALAHI_VICTORIOUS = 'Dralahi has strike you and you fell down. '\
+    'Everything is black. You have lost\nagainst Dralahi.\nPrinces '\
+    'is never to be seen again.\n'

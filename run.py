@@ -113,7 +113,7 @@ def character_choice():
         user_choice = user_input.lower()
 
         if validate_input(user_choice):
-            print('\n You have chosen:\n', dict_of_characters[user_choice])
+            print('\n You have chosen:\n\n', dict_of_characters[user_choice])
             break
 
     return user_choice
@@ -144,7 +144,7 @@ def chose_name():
         '''
         User confirming that the name they typed is the one they want.
         '''
-        name_check = input(f'Is {user_name} name you want? (Y/N)\n')
+        name_check = input(f'\nIs {user_name} name you want? (Y/N)\n')
         name_confirmation = name_check.lower()
         return name_confirmation
 
@@ -171,14 +171,14 @@ def start_story(char, name):
         f'of a sudden a man came\nrushing in yelling: "Hey, {char} {name}!! '\
         'The king needs you! You need\nto go quick, his daughter was taken '\
         'by the evil dark elf Dralahi\nand you are the only person who '\
-        'dares to go against him.\nGo! Go! Go! Time is of essence!"'\
-        '.\n.\n.\n.\n.\n.\n You quickly finish your rakia and start running '\
+        'dares to go after him.\nGo! Go! Go! Time is of essence!"'\
+        '.\n.\n.\n.\n.\n.\nYou quickly finish your rakia and start running '\
         'to see the king. As you are\napproaching the king, he starts '\
-        f'running towards you andstarts begging:\n"Please {name}, you '\
+        f'running towards you and starts begging:\n"Please {name}, you '\
         'need to save my Astrid. I beg of you."\n"Where did he took here" '\
         'you ask.\n"Into The Forbidden forest. Astrid does\'t like that '\
         'place." says the king.\n'\
-        '"No one does, my king, apart from dark elves" you say.\n'
+        '"No one does, my king, apart from dark elves." you say.\n'
 
     for i in s_story:
         print(i, end='', flush=True)
@@ -301,16 +301,16 @@ def warrior_vs_dralahi():
         print(f'You rolled: {dice}\n')
 
         if dice >= 3:
+            print('You succesfully hit Dralahi!\n')
             DRA_HP = DRA_HP - (WAR_STR - DRA_DEF)
             dralahi_dict['health'] = DRA_HP
             d_dralahi = '\n'.join(f'{key}: {value}' for key, value in dralahi_dict.items())
             print(f'{d_dralahi}\n')
         else:
-            print('Dralahi dodged the attack\n')
+            print('Dralahi dodged the attack!\n')
 
         if DRA_HP <= 0:
-            print('You have defeated Dralahi!\n')
-            dralahi_defeated(character, name)
+            print('\nYou have defeated Dralahi!\n')
         else:
             message(story.DRALAHI_ATTACK)
             dralahi_vs_warrior()
@@ -328,16 +328,16 @@ def mage_vs_dralahi():
         print(f'You rolled: {dice}\n')
 
         if dice >= 3:
+            print('You succesfully hit Dralahi!\n')
             DRA_HP = DRA_HP - (MAG_STR - DRA_DEF)
             dralahi_dict['health'] = DRA_HP
             d_dralahi = '\n'.join(f'{key}: {value}' for key, value in dralahi_dict.items())
             print(f'{d_dralahi}\n')
         else:
-            print('Dralahi dodged the attack\n')
+            print('Dralahi dodged the attack!\n')
 
         if DRA_HP <= 0:
-            print('You have defeated Dralahi!\n')
-            dralahi_defeated(character, name)
+            print('\nYou have defeated Dralahi!\n')
         else:
             message(story.DRALAHI_ATTACK)
             dralahi_vs_mage()
@@ -355,11 +355,12 @@ def dralahi_vs_warrior():
         print(f'Dralahi rolled: {dice}')
 
         if dice > 4:
+            print('\nDralahi succesfully hit you!')
             WAR_HP = WAR_HP - (DRA_STR - WAR_DEF)
             w_warrior = Character('warrior', WAR_HP, WAR_STR, WAR_DEF)
             print(f'\n{w_warrior}\n')
         else:
-            print('You successfully dodged the attack')
+            print('\nYou successfully dodged the attack!\n')
 
         if WAR_HP <= 0:
             print('Dralahi have defeated you!\n')
@@ -379,14 +380,16 @@ def dralahi_vs_mage():
         print(f'Dralahi rolled: {dice}')
 
         if dice > 4:
+            print('\nDralahi succesfully hit you!')
             MAG_HP = MAG_HP - (DRA_STR - MAG_DEF)
-            w_warrior = Character('warrior', MAG_HP, MAG_STR, MAG_DEF)
-            print(f'\n{w_warrior}\n')
+            m_mage = Character('mage', MAG_HP, MAG_STR, MAG_DEF)
+            print(f'\n{m_mage}\n')
         else:
-            print('You successfully dodged the attack')
+            print('\nYou successfully dodged the attack!\n')
 
         if MAG_HP <= 0:
             print('Dralahi have defeated you!\n')
+            continue
         else:
             mage_vs_dralahi()
 
@@ -397,42 +400,54 @@ def battle(char):
     appropriate functions will run.
     '''
     if char == "warrior":
-        if WAR_HP > 0:
+        if WAR_HP > 0 and DRA_HP != 0:
             warrior_vs_dralahi()
 
-        if DRA_HP > 0:
+        if DRA_HP > 0 and WAR_HP != 0:
             dralahi_vs_warrior()
 
     else:
-        if MAG_HP > 0:
+        if MAG_HP > 0 and DRA_HP != 0:
             mage_vs_dralahi()
 
-        if DRA_HP > 0:
+        if DRA_HP > 0 and MAG_HP != 0:
             dralahi_vs_mage()
 
 
-def dralahi_defeated(char, name):
+def dralahi_battle_result(char, name):
+    '''
+    This function runs dralah_defeated_story if Dralahi gets defeated!
+    '''
+    if DRA_HP <= 0:
+        dralahi_defeated_story(char, name)
+    else:
+        message(story.DRALAHI_VICTORIOUS)
+
+
+def dralahi_defeated_story(char, name):
     '''
     Prints the string to the terminal letter by letter with
     time delay.
     '''
 
-    s_story = f'You run towards the princes to untie her. She is unconscious. '\
-        'You check if she\nis still alive and she is. You lift her up and start '\
-        'your way back where\nyou came from. On the way, you came across another '\
-        'python, but you easily fight\nhim off. Princes is still unconscious as '\
-        'you approach the end of The Forbidden\nForest. Stepping out of The '\
-        'Forbidden Forest, you see the king and the queen\nnervously waiting not '\
-        'far away and looking at where you came out. They start\nrunning towards '\
-        'you. “Get the medic, quick! She is alive, but barely.” You\nyell. You '\
-        'take the princes into the palace where you find the medic. You '\
-        'place\nprinces on the table and the medic examines her. “She will live!” '\
-        f'says\nthe medic.\n“Thank you {char} {name}! How can we ever repay you?” '\
-        'asks the king.\n“Dralahi will bother us no more. You can open a tab for '\
-        'me in The Rusty Cog Inn.\nThat would be nice.” you say.\n“Consider it '\
-        f'done, {char} {name}! Thank you again!” says the king.\n\nYou make your '\
-        'way to The Rusty Cog Inn\n.\n.\n.\n.\n.\n.\nWord will spread and you will '\
-        f'become known as The Hero {char} {name}!\n'
+    s_story = f'You run towards the princes to untie her. She is '\
+        'unconscious. You check if she\nis still alive and she is. You '\
+        'lift her up and start your way back where\nyou came from. On '\
+        'the way, you came across another python, but you easily '\
+        'fight\nhim off. Princes is still unconscious as you approach '\
+        'the end of The Forbidden\nForest. Stepping out of The Forbidden '\
+        'Forest, you see the king and the queen\nnervously waiting not '\
+        'far away and looking at where you came out. They start\nrunning '\
+        'towards you. “Get the medic, quick! She is alive, but barely.” '\
+        'You\nyell. You take the princes into the palace where you find '\
+        'the medic. You place\nprinces on the table and the medic examines '\
+        f'her. “She will live!” says\nthe medic.\n“Thank you {char} {name}! '\
+        'How can we ever repay you?” asks the king.\n“Dralahi will bother '\
+        'us no more. You can open a tab for me in The Rusty Cog Inn.\nThat'\
+        f' would be nice.” you say.\n“Consider it done, {char} {name}! '\
+        'Thank you again!” says the king.\n\nYou make your way to The '\
+        'Rusty Cog Inn\n.\n.\n.\n.\n.\n.\nWord will spread and you will '\
+        f'become known as The Hero {char} {name}!\n\n'
 
     for i in s_story:
         print(i, end='', flush=True)
@@ -458,7 +473,7 @@ def play_again():
             MAG_HP = 130
             main()
         else:
-            print('Thank you for playing!')
+            print('Next time then!')
             sys.exit()
 
 
@@ -466,21 +481,22 @@ def main():
     """
     Run all program functions
     """
-    print(story.INITIAL)
-    start_game()
-    message(story.INTRO_STORY)
+    # print(story.INITIAL)
+    # start_game()
+    # message(story.INTRO_STORY)
     character = character_choice()
     name = chose_name()
-    start_story(character, name)
-    next_move(character, name)
-    message(story.PYTHON)
-    attack_python()
-    message(story.DEMON)
-    want_a_riddle()
-    message(story.FINAL_FIGHT)
-    print(' ')
-    print(DRALAHI)
+    # start_story(character, name)
+    # next_move(character, name)
+    # message(story.PYTHON)
+    # attack_python()
+    # message(story.DEMON)
+    # want_a_riddle()
+    # message(story.FINAL_FIGHT)
+    # print(DRALAHI)
     battle(character)
+    dralahi_battle_result(character, name)
+    print('Thank you for playing!\n')
 
 
 main()
