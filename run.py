@@ -270,12 +270,13 @@ def solve_riddle():
     if riddle_answer != 'mushroom':
         message(story.WRONG_RIDDLE_ANSWER)
         print('Game over. Thank you for playing!')
-        sys.exit()
+        play_again()
 
 
 def warrior_vs_dralahi():
     '''
-    Placeholder
+    User tipes in "roll" to roll the dice. Based on the dice roll
+    User will either hit Dralahi or Dralahi will dodge the attack.
     '''
     global dra_hp
     while dra_hp > 0 and war_hp != 0:
@@ -292,7 +293,7 @@ def warrior_vs_dralahi():
             print('Dralahi dodged the attack\n')
 
         if dra_hp <= 0:
-            print('Good Game1')
+            print('You have defeated!\n')
         else:
             message(story.DRALAHI_ATTACK)
             dralahi_vs_warrior()
@@ -300,7 +301,8 @@ def warrior_vs_dralahi():
 
 def mage_vs_dralahi():
     '''
-    Placeholder
+    User tipes in "roll" to roll the dice. Based on the dice roll
+    User will either hit Dralahi or Dralahi will dodge the attack.
     '''
     global dra_hp
     while dra_hp > 0 and mag_hp != 0:
@@ -317,7 +319,7 @@ def mage_vs_dralahi():
             print('Dralahi dodged the attack\n')
 
         if dra_hp <= 0:
-            print('Good Game1')
+            print('You have defeated!\n')
         else:
             message(story.DRALAHI_ATTACK)
             dralahi_vs_mage()
@@ -325,7 +327,9 @@ def mage_vs_dralahi():
 
 def dralahi_vs_warrior():
     '''
-    Placeholder
+    Dralahi (computer) will roll the dice. Based on
+    the roll outcome Dralahi will either attack the
+    warrior or warrior will dodge the attack.
     '''
     global war_hp
     while war_hp > 0 and dra_hp != 0:
@@ -340,14 +344,16 @@ def dralahi_vs_warrior():
             print('You successfully dodged the attack')
 
         if war_hp <= 0:
-            print('Good Game2')
+            print('Dralahi have defeated you!\n')
         else:
             warrior_vs_dralahi()
 
 
 def dralahi_vs_mage():
     '''
-    Placeholder
+    Dralahi (computer) will roll the dice. Based on
+    the roll outcome Dralahi will either attack the
+    mage or mage will dodge the attack.
     '''
     global mag_hp
     while mag_hp > 0 and dra_hp != 0:
@@ -362,14 +368,15 @@ def dralahi_vs_mage():
             print('You successfully dodged the attack')
 
         if mag_hp <= 0:
-            print('Good Game2')
+            print('Dralahi have defeated you!\n')
         else:
             mage_vs_dralahi()
 
 
 def battle(char):
     '''
-    Placeholder
+    Based on the user's choice of the character
+    appropriate functions will run.
     '''
     if char == "warrior":
         if war_hp > 0:
@@ -415,17 +422,17 @@ def main():
     """
     start_game()
     # message(story.INTRO_STORY)
-    character = character_choice()
+    # character = character_choice()
     # name = chose_name()
     # start_story(character, name)
     # next_move(character, name)
     # message(story.PYTHON)
     # attack_python()
     # message(story.DEMON)
-    # want_a_riddle()
+    want_a_riddle()
     # message(story.FINAL_FIGHT)
     # print(dralahi)
-    battle(character)
+    # battle(character)
 
 
 print('Welcome to fantasy role playing game!\n')
