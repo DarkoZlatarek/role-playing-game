@@ -85,7 +85,7 @@ DEMON = 'As you step over the python\'s dead body and continue '\
     'grapes.\nIf you want to pass, you need to solve the riddle.”'\
     'says the demon.\n'
 
-WANT_A_RIDDLE_QUESTION = '\nWhat will it be, stranger? (Y/N)\n'
+WANT_A_RIDDLE_QUESTION = '\nWhat will it be, stranger? (Y/N)'
 
 GET_READY = '\n"Get ready stranger!" says Harskelisia\n'
 
@@ -94,7 +94,7 @@ SHAME = '\n"Shame. Such a prity face you have." were the last words '\
 
 WASTE_TIME = '\n"Don\'t waste my time!"\n'
 
-RIDDLE_QUESTION = 'What has a room but no door to enter?\n'
+RIDDLE_QUESTION = 'What has a room but no door to enter?'
 
 CORRECT_RIDDLE_ANSWER = '\n"Well done stranger! I shall let you pass '\
     'without ever seeing\nyour face!" says Harskelisia and '\

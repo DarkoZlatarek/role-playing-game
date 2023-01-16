@@ -259,7 +259,7 @@ def want_a_riddle():
     If the answer is "y", they will get the riddle.
     '''
     message(story.WANT_A_RIDDLE_QUESTION)
-    solve_the_riddle = input('')
+    solve_the_riddle = input('\n')
     riddle = solve_the_riddle.lower()
 
     if riddle == 'y':
@@ -280,7 +280,7 @@ def solve_riddle():
     kill the player and play_again method will run.
     '''
     message(story.RIDDLE_QUESTION)
-    riddle_input = input('')
+    riddle_input = input('\n')
     riddle_answer = riddle_input.lower()
 
     if riddle_answer == 'mushroom':
