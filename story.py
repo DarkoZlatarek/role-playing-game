@@ -51,7 +51,7 @@ COWARD = '“I am sorry, but I can not help you”. You go back to '\
     'leave me to drink in peace!!” You sit back down,\nfinish your '\
     'glass and order another rakia.\n\n'
 
-F_FOREST = '”Alright. I will save the princes” you say and '\
+F_FOREST = '”Ok. I will save the princes” you say and '\
     'head towards The Forbidden forest.\n'
 
 PYTHON = '\nAs you step into The Forbidden forest, you feel the '\
@@ -83,7 +83,7 @@ DEMON = 'As you step over the python\'s dead body and continue '\
     'you ask.\n“If you want to eat meat, you need to kill the '\
     'animal.\nIf you want to drink wine, you need to squash the '\
     'grapes.\nIf you want to pass, you need to solve the riddle.”'\
-    'says the demon.\n'
+    ' says the demon.\n'
 
 WANT_A_RIDDLE_QUESTION = '\nWhat will it be, stranger? (Y/N)'
 
