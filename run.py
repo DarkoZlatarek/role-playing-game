@@ -6,16 +6,16 @@ import story
 
 class Character:
     '''
-    Creates the characters
+    Creates the characters for the game that the user can choose from.
     '''
-    def __init__(self, rase, health, strength, defense):
-        self.rase = rase
+    def __init__(self, race, health, strength, defense):
+        self.race = race
         self.health = health
         self.strength = strength
         self.defense = defense
 
     def __str__(self):
-        return f'rase: {self.rase} \n health: {self.health} \n strength: {self.strength} \n defense: {self.defense}'
+        return f'race: {self.race} \n health: {self.health} \n strength: {self.strength} \n defense: {self.defense}'
 
 
 DRA_HP = 75
@@ -44,8 +44,8 @@ dict_of_characters = {}
 warrior = Character('warrior', WAR_HP, WAR_STR, WAR_DEF)
 mage = Character('mage', MAG_HP, MAG_STR, MAG_DEF)
 
-dict_of_characters[warrior.rase] = warrior
-dict_of_characters[mage.rase] = mage
+dict_of_characters[warrior.race] = warrior
+dict_of_characters[mage.race] = mage
 
 
 def start_game():
@@ -66,7 +66,7 @@ def start_game():
         print(story.RULES)
         start_or_exit()
     else:
-        print('Don\'t understand.')
+        print('\nDon\'t understand.\n')
         start_game()
 
 
@@ -106,7 +106,7 @@ def character_choice():
     '''
 
     while True:
-        print('Choose a rase you want to play with:\n')
+        print('Choose a race you want to play with:\n')
         print(f'{warrior} \n')
         print(f'{mage} \n')
         user_input = input('Type warrior or mage?\n')
@@ -122,21 +122,22 @@ def character_choice():
 def validate_input(choice):
     '''
     Inside the try, raises ValueError if input from the user
-    is not one of the character they can chose from.
+    is not one of the character they can choose from.
     '''
     try:
         if choice not in dict_of_characters:
             raise ValueError('\nSorry, don\'t know who that is.')
     except ValueError as err:
-        print(f'{err} Chose between warrior or mage!\n')
+        print(f'{err} Choose between warrior or mage!\n')
         return False
 
     return True
 
 
-def chose_name():
+def choose_name():
     '''
-    Collects the user's name input.
+    Collects the user's name input and returns it so it can
+    be used in other codes.
     '''
     user_name = input('\nType your name:\n')
 
@@ -153,7 +154,7 @@ def chose_name():
     if name_confirmed == 'y':
         return user_name
     elif name_confirmed == 'n':
-        chose_name()
+        choose_name()
     else:
         print('Sorry, was that "y" or "n"?\n')
         input_name_check()
@@ -214,8 +215,7 @@ def dice_roll_input():
 
     if dice_conf == 'roll':
         roll_dice()
-        return
-    if dice_conf != 'roll':
+    else:
         dice_roll_input()
 
 
@@ -242,7 +242,7 @@ def kill_python(dice):
 
 def attack_python():
     '''
-    Function to loop through dice rolls until dice>1.
+    Function to loop through dice rolls until dice roll is more then two.
     '''
     print('Roll more then "2" to kill the python.\n')
     dice = 2
@@ -254,8 +254,9 @@ def attack_python():
 
 def want_a_riddle():
     '''
-    User will chose weather the want the riddle question.
-    If answer is "no" they will "die" and the game will be over.
+    User will choose whether they want the riddle question.
+    If answer is "n" they will "die" and the game will be over.
+    If the answer is "y", they will get the riddle.
     '''
     message(story.WANT_A_RIDDLE_QUESTION)
     solve_the_riddle = input('')
@@ -275,7 +276,8 @@ def want_a_riddle():
 def solve_riddle():
     '''
     The user will answer the riddle question and based on
-    the answer they will go forward or the game will end.
+    the answer they will go forward or the demon will 
+    kill the player and play_again method will run.
     '''
     message(story.RIDDLE_QUESTION)
     riddle_input = input('')
@@ -291,8 +293,8 @@ def solve_riddle():
 
 def warrior_vs_dralahi():
     '''
-    User tipes in "roll" to roll the dice. Based on the dice roll
-    User will either hit Dralahi or Dralahi will dodge the attack.
+    User types in "roll" to roll the dice. Based on the dice roll,
+    either user will hit Dralahi or Dralahi will dodge the attack.
     '''
     global DRA_HP
     while DRA_HP > 0 and WAR_HP != 0:
@@ -301,7 +303,7 @@ def warrior_vs_dralahi():
         print(f'You rolled: {dice}\n')
 
         if dice >= 3:
-            print('You succesfully hit Dralahi!\n')
+            print('You successfully hit Dralahi!\n')
             DRA_HP = DRA_HP - (WAR_STR - DRA_DEF)
             dralahi_dict['health'] = DRA_HP
             d_dralahi = '\n'.join(f'{key}: {value}' for key, value in dralahi_dict.items())
@@ -318,8 +320,8 @@ def warrior_vs_dralahi():
 
 def mage_vs_dralahi():
     '''
-    User tipes in "roll" to roll the dice. Based on the dice roll
-    User will either hit Dralahi or Dralahi will dodge the attack.
+    User types in "roll" to roll the dice. Based on the dice roll,
+    either user will hit Dralahi or Dralahi will dodge the attack.
     '''
     global DRA_HP
     while DRA_HP > 0 and MAG_HP != 0:
@@ -328,7 +330,7 @@ def mage_vs_dralahi():
         print(f'You rolled: {dice}\n')
 
         if dice >= 3:
-            print('You succesfully hit Dralahi!\n')
+            print('You successfully hit Dralahi!\n')
             DRA_HP = DRA_HP - (MAG_STR - DRA_DEF)
             dralahi_dict['health'] = DRA_HP
             d_dralahi = '\n'.join(f'{key}: {value}' for key, value in dralahi_dict.items())
@@ -355,7 +357,7 @@ def dralahi_vs_warrior():
         print(f'Dralahi rolled: {dice}')
 
         if dice > 4:
-            print('\nDralahi succesfully hit you!')
+            print('\nDralahi successfully hit you!')
             WAR_HP = WAR_HP - (DRA_STR - WAR_DEF)
             w_warrior = Character('warrior', WAR_HP, WAR_STR, WAR_DEF)
             print(f'\n{w_warrior}\n')
@@ -380,7 +382,7 @@ def dralahi_vs_mage():
         print(f'Dralahi rolled: {dice}')
 
         if dice > 4:
-            print('\nDralahi succesfully hit you!')
+            print('\nDralahi successfully hit you!')
             MAG_HP = MAG_HP - (DRA_STR - MAG_DEF)
             m_mage = Character('mage', MAG_HP, MAG_STR, MAG_DEF)
             print(f'\n{m_mage}\n')
@@ -411,7 +413,8 @@ def battle(char):
 
 def dralahi_battle_result(char, name):
     '''
-    This function runs dralah_defeated_story if Dralahi gets defeated!
+    This function runs dralahi_defeated_story if Dralahi gets defeated
+    or dralahi_victorious otherwise.
     '''
     if DRA_HP <= 0:
         dralahi_defeated_story(char, name)
@@ -452,7 +455,7 @@ def dralahi_defeated_story(char, name):
 def play_again():
     '''
     Askes the user if they would like to play again. If input is "y"
-    resets the health points to initial ammount and runs the main 
+    resets the health points to initial amount and runs the main
     function again.
     '''
     global WAR_HP
@@ -478,23 +481,24 @@ def main():
     """
     Run all program functions
     """
-    # print(story.INITIAL)
-    # start_game()
-    # message(story.INTRO_STORY)
+    print(story.INITIAL)
+    start_game()
+    message(story.INTRO_STORY)
     character = character_choice()
-    name = chose_name()
-    # start_story(character, name)
-    # next_move(character, name)
-    # message(story.PYTHON)
-    # attack_python()
-    # message(story.DEMON)
-    # want_a_riddle()
-    # message(story.FINAL_FIGHT)
-    # print(DRALAHI)
+    name = choose_name()
+    start_story(character, name)
+    next_move(character, name)
+    message(story.PYTHON)
+    attack_python()
+    message(story.DEMON)
+    want_a_riddle()
+    message(story.FINAL_FIGHT)
+    print(DRALAHI)
     battle(character)
     dralahi_battle_result(character, name)
     print('Thank you for playing!\n')
+    play_again()
 
 
 main()
-play_again()
+

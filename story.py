@@ -100,9 +100,12 @@ CORRECT_RIDDLE_ANSWER = '\n"Well done stranger! I shall let you pass '\
     'without ever seeing\nyour face!" says Harskelisia and '\
     'disappears into the fog.\n'
 
-WRONG_RIDDLE_ANSWER = '"Too bad your brain is not as prety as your '\
-    'face is." were the\nlast words you hear before everything '\
-    'is black and you are no more.\n'
+WRONG_RIDDLE_ANSWER = '"The answer was mushroom. Too bad your '\
+    'brain is not as pretty as your face is."\nwere the last words '\
+    'you hear before everything is black and you are no more.\n'\
+    'Princes is never seen again. THe king and the Queen continue living '\
+    'the\nconstant hope that their daughter will someday be back.\n'\
+    'She will not.\n\n'
 
 FINAL_FIGHT = '\nAs you feel good about yourself for surviving the '\
     'demon, you continue\nfollowing the footprints. Suddenly, you '\
