@@ -85,14 +85,14 @@ DEMON = 'As you step over the python\'s dead body and continue '\
     'grapes.\nIf you want to pass, you need to solve the riddle.”'\
     'says the demon.\n'
 
-WANT_A_RIDDLE_QUESTION = 'What will it be, stranger? (Y/N)\n'
+WANT_A_RIDDLE_QUESTION = '\nWhat will it be, stranger? (Y/N)\n'
 
 GET_READY = '\n"Get ready stranger!" says Harskelisia\n'
 
-SHAME = '"Shame. Such a prity face you have." were the last words '\
+SHAME = '\n"Shame. Such a prity face you have." were the last words '\
     'you hear before\neverything is black and you are no more.\n'
 
-WASTE_TIME = '"Don\'t waste my time!"\n'
+WASTE_TIME = '\n"Don\'t waste my time!"\n'
 
 RIDDLE_QUESTION = 'What has a room but no door to enter?\n'
 
@@ -100,10 +100,10 @@ CORRECT_RIDDLE_ANSWER = '\n"Well done stranger! I shall let you pass '\
     'without ever seeing\nyour face!" says Harskelisia and '\
     'disappears into the fog.\n'
 
-WRONG_RIDDLE_ANSWER = '"The answer was mushroom. Too bad your '\
+WRONG_RIDDLE_ANSWER = '\n"The answer was mushroom. Too bad your '\
     'brain is not as pretty as your face is."\nwere the last words '\
     'you hear before everything is black and you are no more.\n'\
-    'Princes is never seen again. THe king and the Queen continue living '\
+    'Princes is never seen again. The king and the Queen continue living '\
     'the\nconstant hope that their daughter will someday be back.\n'\
     'She will not.\n\n'
 

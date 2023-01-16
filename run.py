@@ -190,7 +190,7 @@ def next_move(char, name):
     '''
     User chooses if he wants to go after the princes or not.
     '''
-    
+
     save_princes = input('\nWhat will you do?\nA) Save the princes\nB) Go back to The Rusty Cog Inn\n')
     choice = save_princes.lower()
 
@@ -276,7 +276,7 @@ def want_a_riddle():
 def solve_riddle():
     '''
     The user will answer the riddle question and based on
-    the answer they will go forward or the demon will 
+    the answer they will go forward or the demon will
     kill the player and play_again method will run.
     '''
     message(story.RIDDLE_QUESTION)
@@ -501,4 +501,3 @@ def main():
 
 
 main()
-
