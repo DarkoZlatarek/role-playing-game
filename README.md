@@ -52,6 +52,10 @@ Player will encounter various dangers that they need to defeat either by being l
 * More adventures such as fighting live trees / bushes
 * More races to choose from
 
+## Data model
+* Chart diagram created:
+![Chart diagram for the game](images/chart_diagram_HEROS_QUEST.png)
+
 ## Testing
 <hr>
 
@@ -90,3 +94,4 @@ with while loop to fix the issue
 
 * Character class based on user input: [stack overflow](https://stackoverflow.com/questions/50065610/python-3-6-user-input-call-class-variable)
 * Time delay for printing the story: [geeksforgeeks](https://www.geeksforgeeks.org/how-to-add-time-delay-in-python/)
+* Heading for the game: [patorjk.com](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
